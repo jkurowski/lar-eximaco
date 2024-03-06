@@ -32,7 +32,7 @@ Route::group(['namespace' => 'Front', 'middleware' => 'restrictIp', 'as' => 'fro
     Route::post('/kontakt/{property}', 'ContactController@property')->name('contact.property');
 
     Route::get('inwestor',
-        'IndexController@index')->name('inwestor');
+        'Static\IndexController@investor')->name('investor');
 
     // Completed investment
     Route::get('inwestycje-zrealizowane',

@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
-    public function howbuy()
+    public function investor()
     {
-        $page = Page::find(9);
-        return view('front.static.howbuy', compact('page'));
+        $page = Page::find(1);
+        return view('front.static.investor', compact('page'));
     }
 }
