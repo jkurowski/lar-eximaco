@@ -23,12 +23,12 @@
 
     <!-- Styles -->
     <link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/styles.min.css?v=0302') }}" rel="stylesheet">
+    <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
 
     @stack('style')
 
 </head>
-<body class="{{ !empty($body_class) ? $body_class : '' }}">
+<body class="{{ !empty($body_class) ? $body_class : '' }}" data-lazy-background="{{ asset('images/kreski-tlo.png') }}" style="background-position: center -16rem, center 1900px; background-repeat: no-repeat;">
 {!! settings()->get("scripts_afterbody") !!}
 
 <div id="pagecontent">
@@ -54,10 +54,19 @@
     @include('inline.modal')
 @endauth
 
+<!-- Styles -->
+<link href="{{ asset('/css/slick.css') }}" rel="stylesheet">
+<link href="{{ asset('/css/animations.css') }}" rel="stylesheet">
+<link href="{{ asset('/css/leaflet.css') }}" rel="stylesheet">
+<link href="{{ asset('/css/aos.css') }}" rel="stylesheet">
+
 <!-- jQuery -->
 <script src="{{ asset('/js/jquery.min.js') }}" charset="utf-8"></script>
+<script src="{{ asset('/js/slick.min.js') }}" charset="utf-8"></script>
 <script src="{{ asset('/js/bootstrap.bundle.min.js') }}" charset="utf-8"></script>
-<script src="{{ asset('/js/app.min.js') }}" charset="utf-8"></script>
+<script src="{{ asset('/js/leaflet.js') }}" charset="utf-8"></script>
+<script src="{{ asset('/js/aos.js') }}" charset="utf-8"></script>
+<script src="{{ asset('/js/main.js') }}" charset="utf-8"></script>
 
 @stack('scripts')
 
@@ -76,6 +85,14 @@
     </div>
 @endif
 <script type="text/javascript">
+    $(window).on("scroll", function () {
+        AOS.init({
+            disable: function() {
+                const maxWidth = 1200;
+                return window.innerWidth < maxWidth;
+            }
+        });
+    });
     $(document).ready(function(){
         @if(settings()->get("popup_exit_status") == 1)
             $(document).mousemove(function(e) {

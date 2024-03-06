@@ -39,10 +39,10 @@
                 <div class="col-md-6 col-xl-2 offset-xl-1">
                     <h4 class="site-footer_title">Menu</h4>
                     <ul>
-                        <li><a href="" target="_blank">Inwestycje w sprzedaży</a></li>
-                        <li><a href="" target="_blank">Inwestor</a></li>
-                        <li><a href="" target="_blank">Inwestycje zrealizowane</a></li>
-                        <li><a href="" target="_blank">Kontakt</a></li>
+                        <li><a href="">Inwestycje w sprzedaży</a></li>
+                        <li><a href="">Inwestor</a></li>
+                        <li><a href="">Inwestycje zrealizowane</a></li>
+                        <li><a href="kontakt">Kontakt</a></li>
                     </ul>
                 </div>
                 <div class="col-md-6 col-xl-4 offset-xl-1">

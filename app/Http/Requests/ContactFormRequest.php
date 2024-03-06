@@ -29,8 +29,7 @@ class ContactFormRequest extends FormRequest
             'form_email' => 'required|email:rfc',
             'form_message' => 'required',
             'form_phone' => 'required',
-            'rule_1' => 'required',
-            'rule_2' => 'required'
+            'rule_1' => 'required'
         ];
 
         return $rules;
@@ -44,8 +43,7 @@ class ContactFormRequest extends FormRequest
             'form_email.email' => 'Nieprawidłowy adres e-mail',
             'form_message.required' => 'To pole jest wymagane',
             'form_phone.required' => 'To pole jest wymagane',
-            'rule_1.required' => 'To pole jest wymagane',
-            'rule_2.required' => 'To pole jest wymagane'
+            'rule_1.required' => 'To pole jest wymagane'
         ];
     }
 }

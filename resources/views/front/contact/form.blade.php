@@ -1,93 +1,78 @@
-<section id="contactForm">
-    <div class="container">
-        <div class="row d-flex justify-content-center mt-3 mt-sm-5">
-            <div class="col-12">
-                @if (session('success'))
-                    <div class="alert alert-success border-0">
-                        {{ session('success') }}
-                    </div>
-                @endif
-                @if (session('warning'))
-                    <div class="alert alert-warning border-0">
-                        {{ session('warning') }}
-                    </div>
-                @endif
-                <form method="post" id="contact-form" action="" class="validateForm">
-                    {{ csrf_field() }}
-                    <div class="row">
-                        <div class="col-12 mb-4 mb-md-0 col-md-4 form-input">
-                            <label for="form_name">@lang('website.form-label-name') <span class="text-danger">*</span></label>
-                            <input name="form_name" id="form_name" class="validate[required] form-control @error('form_name') is-invalid @enderror" type="text" value="{{ old('form_name') }}">
-
+<div class="container">
+    <div class="section-header text-center">
+        <p class="section-header__subtitle">Kontakt z nami</p>
+        <h1 class="section-header__title">Formularz kontaktowy</h1>
+    </div>
+    <div class="row">
+        <div class="col-11 col-xxl-10 mx-auto cta__box">
+            <img src="{{ asset('images/tlo-cta.jpg') }}" alt="budynek" class="cta__img-bg" width="295" height="510" loading="lazy">
+            <img src="{{ asset('images/kobieta-cta.png') }}" alt="kobieta" class="cta__img" width="428" height="627" loading="lazy">
+            <div class="row">
+                <div class="col-xl-7">
+                    @if (session('success'))
+                        <div class="alert alert-success border-0">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                    @if (session('warning'))
+                        <div class="alert alert-warning border-0">
+                            {{ session('warning') }}
+                        </div>
+                    @endif
+                    <form method="post" action="" class="contact-form validateForm">
+                        {{ csrf_field() }}
+                        <div class="box-anim mb-3">
+                            <label for="name" class="lab-anim">Imię i Nazwisko / Nazwa firmy</label>
+                            <input name="form_name" type="text" class="form-control validate[required] @error('form_name') is-invalid @enderror" id="name" value="{{ old('form_name') }}">
                             @error('form_name')
                             <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                             @enderror
                         </div>
-                        <div class="col-12 mb-4 mb-md-0 col-md-4 form-input col-input-important">
-                            <label for="form_surnames">@lang('website.form-label-lastname') <span class="text-danger">*</span></label>
-                            <input name="form_surnames" id="form_surnames" class="form-control" type="text" value="{{ old('form_surname') }}">
+                        <div class="row mb-3">
+                            <div class="col box-anim">
+                                <label for="phone" class="lab-anim">Telefon</label>
+                                <input name="form_phone" type="tel" class="form-control validate[required] @error('form_phone') is-invalid @enderror" id="phone" value="{{ old('form_phone') }}">
+                                @error('form_phone')
+                                <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                @enderror
+                            </div>
+                            <div class="col box-anim">
+                                <label for="email" class="lab-anim">Adres e-mail</label>
+                                <input name="form_email" type="email" class="form-control validate[required] @error('form_email') is-invalid @enderror" id="email" value="{{ old('form_email') }}">
+                                @error('form_email')
+                                <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                @enderror
+                            </div>
                         </div>
-                        <div class="col-12 mb-4 mb-md-0 col-md-4 form-input">
-                            <label for="form_email">@lang('website.form-label-email') <span class="text-danger">*</span></label>
-                            <input name="form_email" id="form_email" class="validate[required] form-control @error('form_email') is-invalid @enderror" type="text" value="{{ old('form_email') }}">
-
-                            @error('form_email')
-                            <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
-                            @enderror
-                        </div>
-                        <div class="col-12 col-md-4 form-input">
-                            <label for="form_phone">@lang('website.form-label-phone') <span class="text-danger">*</span></label>
-                            <input name="form_phone" id="form_phone" class="validate[required] form-control @error('form_phone') is-invalid @enderror" type="text" value="{{ old('form_phone') }}">
-
-                            @error('form_phone')
-                            <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
-                            @enderror
-                        </div>
-                        <div class="col-12 mt-4 form-input">
-                            <label for="form_message">@lang('website.form-label-message') <span class="text-danger">*</span></label>
-                            <textarea rows="5" cols="1" name="form_message" id="form_message" class="validate[required] form-control @error('form_message') is-invalid @enderror">{{ old('form_message') }}</textarea>
-
+                        <div class="mb-4 box-anim">
+                            <label for="message" class="lab-anim">Wiadomość</label>
+                            <textarea name="form_message" id="message" class="form-control validate[required] @error('form_message') is-invalid @enderror" rows="2" maxlength="3000" required>{{ old('form_message') }}</textarea>
                             @error('form_message')
                             <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                             @enderror
                         </div>
-                        <div class="col-12 col-xxl-8">
-                            @if($obligation)
-                                <div class="rodo-obligation mt-3">
-                                    {!! $obligation->obligation !!}
-                                </div>
-                            @endif
-                            <div class="rodo-rules">
-                                @foreach ($rules as $r)
-                                    <div class="col-12 @error('rule_'.$r->id) is-invalid @enderror">
-                                        <div class="rodo-rule clearfix">
-                                            <input name="rule_{{$r->id}}" id="rule_{{$r->id}}" value="1" type="checkbox" @if($r->required === 1) class="validate[required]" @endif data-prompt-position="topLeft:0">
-                                            <label for="rule_{{$r->id}}" class="rules-text">
-                                                {!! $r->text !!}
-                                                @error('rule_'.$r->id)
-                                                <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
-                                                @enderror
-                                            </label>
-                                        </div>
-                                    </div>
-                                @endforeach
+
+                        @foreach ($rules as $r)
+                            <div class="mb-3 form-check position-relative @error('rule_'.$r->id) is-invalid @enderror">
+                                <input name="rule_{{$r->id}}" type="checkbox" class="form-check-input @if($r->required === 1) validate[required] @endif" id="rule_{{$r->id}}">
+                                <label class="form-check-label form-check-label--check" for="rule_{{$r->id}}">{!! $r->text !!}</label>
+                                @error('rule_'.$r->id)
+                                <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                @enderror
                             </div>
+                        @endforeach
+                        <div class="text-center text-sm-end">
+                            <script type="text/javascript">
+                                document.write("<button type=\"submit\" class=\"project-btn project-btn--gray\"><span>Wyślij</span></button>");
+                            </script>
+                            <noscript>Do poprawnego działania, Java musi być włączona.</noscript>
                         </div>
-                        <div class="col-12 col-xxl-4 d-flex justify-content-end align-items-end">
-                            <div class="form-submit">
-                                <input name="form_page" type="hidden" value="{{ $page_name }}">
-                                <script type="text/javascript">
-                                    document.write("<button class=\"bttn bttn-icon\" type=\"submit\">@lang('website.button-send-message') <i class=\"ms-5 las la-chevron-circle-right\"></i></button>");
-                                </script>
-                                <noscript>Do poprawnego działania, Java musi być włączona.</noscript>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</section>
+</div>
 @push('scripts')
     <script src="{{ asset('js/validation.js') }}" charset="utf-8"></script>
     <script src="{{ asset('js/pl.js') }}" charset="utf-8"></script>

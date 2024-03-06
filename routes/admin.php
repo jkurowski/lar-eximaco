@@ -11,18 +11,11 @@ use Illuminate\Support\Facades\Route;
 Route::group([
     'namespace' => 'Admin', 'prefix' => '/admin', 'as' => 'admin.', 'middleware' => ['auth', 'verified']], function () {
 
-    Route::post('/', 'Slider\IndexController@sort')->name('slider.sort');
-
     Route::post('slider/set', 'Slider\IndexController@sort')->name('slider.sort');
     Route::post('gallery/set', 'Gallery\IndexController@sort')->name('gallery.sort');
     Route::post('image/set', 'Gallery\ImageController@sort')->name('image.sort');
     Route::post('box/set', 'Box\IndexController@sort')->name('box.sort');
-    Route::post('promotion/set', 'Promotion\IndexController@sort')->name('promotion.sort');
-    Route::post('commercial/set', 'Commercial\IndexController@sort')->name('commercial.sort');
-    Route::post('rent/set', 'Rent\IndexController@sort')->name('rent.sort');
     Route::post('city/set', 'City\IndexController@sort')->name('city.sort');
-    Route::post('job/set', 'Job\IndexController@sort')->name('job.sort');
-    Route::post('awards/set', 'Awards\IndexController@sort')->name('awards.sort');
     Route::post('invest-page/set', 'Developro\Page\IndexController@sort')->name('investment_page.sort');
 
     //Route::get('article/import', 'Article\IndexController@import')->name('article.import');
@@ -37,13 +30,10 @@ Route::group([
         'url' => 'Url\IndexController',
         'gallery' => 'Gallery\IndexController',
         'image' => 'Gallery\ImageController',
-        'map' => 'Map\IndexController',
         'slider' => 'Slider\IndexController',
         'user' => 'User\IndexController',
         'role' => 'Role\IndexController',
         'greylist' => 'Greylist\IndexController',
-        'article' => 'Article\IndexController',
-        'news' => 'News\IndexController',
         'box'=> 'Box\IndexController',
         'city'=> 'City\IndexController',
     ]);
@@ -76,50 +66,44 @@ Route::group([
 
 // CRM
     // admin.crm
-    Route::group(['namespace' => 'Crm', 'prefix' => '/crm', 'as' => 'crm.'], function () {
-
-        Route::get('contact/datatable', 'Contact\IndexController@datatable')->name('contact.datatable');
-        Route::resources([
-            'contact' => 'Contact\IndexController'
-        ]);
-
-        Route::get('inbox', 'Inbox\IndexController@index')->name('inbox.index');
-        Route::get('inbox/datatable', 'Inbox\IndexController@datatable')->name('inbox.datatable');
-        Route::delete('inbox/{id}', 'Inbox\IndexController@destroy')->name('inbox.destroy');
-
-        // Statistics
-        Route::group(['namespace' => 'Statistics','prefix'=>'/statistics', 'as' => 'statistics.'], function () {
-            Route::get('/', 'IndexController@index')->name('index');
-            Route::get('/rooms', 'IndexController@rooms')->name('rooms');
-        });
-
-        // Settings
-        Route::group(['namespace' => 'Statistics','prefix'=>'/statistics', 'as' => 'statistics.'], function () {
-            Route::get('/', 'IndexController@index')->name('index');
-            Route::get('/rooms', 'IndexController@rooms')->name('rooms');
-        });
-
-        // admin.crm.clients.create
-        Route::group(['namespace' => 'Client','prefix'=>'/clients', 'as' => 'clients.'], function () {
-
-            Route::get('/', 'IndexController@index')->name('index');
-            Route::get('/datatable', 'IndexController@datatable')->name('datatable');
-            Route::get('/create', 'IndexController@create')->name('create');
-            Route::get('/{client}', 'IndexController@show')->name('show');
-            Route::put('/{client}', 'IndexController@update')->name('update');
-
-            Route::get('{client}/calendar', 'CalendarController@index')->name('calendar');
-            Route::get('{client}/rodo', 'RodoController@show')->name('rodo');
-
-            // Client chat
-            Route::group(['prefix'=>'{client}/chat', 'as' => 'chat.'], function () {
-                Route::get('/', 'ChatController@show')->name('show');
-                Route::post('/form', 'ChatController@form')->name('form');
-                Route::post('/mark', 'ChatController@mark')->name('mark');
-                Route::post('/', 'ChatController@create')->name('create');
-            });
-        });
-    });
+//    Route::group(['namespace' => 'Crm', 'prefix' => '/crm', 'as' => 'crm.'], function () {
+//        Route::get('inbox', 'Inbox\IndexController@index')->name('inbox.index');
+//        Route::get('inbox/datatable', 'Inbox\IndexController@datatable')->name('inbox.datatable');
+//        Route::delete('inbox/{id}', 'Inbox\IndexController@destroy')->name('inbox.destroy');
+//
+//        // Statistics
+//        Route::group(['namespace' => 'Statistics','prefix'=>'/statistics', 'as' => 'statistics.'], function () {
+//            Route::get('/', 'IndexController@index')->name('index');
+//            Route::get('/rooms', 'IndexController@rooms')->name('rooms');
+//        });
+//
+//        // Settings
+//        Route::group(['namespace' => 'Statistics','prefix'=>'/statistics', 'as' => 'statistics.'], function () {
+//            Route::get('/', 'IndexController@index')->name('index');
+//            Route::get('/rooms', 'IndexController@rooms')->name('rooms');
+//        });
+//
+//        // admin.crm.clients.create
+//        Route::group(['namespace' => 'Client','prefix'=>'/clients', 'as' => 'clients.'], function () {
+//
+//            Route::get('/', 'IndexController@index')->name('index');
+//            Route::get('/datatable', 'IndexController@datatable')->name('datatable');
+//            Route::get('/create', 'IndexController@create')->name('create');
+//            Route::get('/{client}', 'IndexController@show')->name('show');
+//            Route::put('/{client}', 'IndexController@update')->name('update');
+//
+//            Route::get('{client}/calendar', 'CalendarController@index')->name('calendar');
+//            Route::get('{client}/rodo', 'RodoController@show')->name('rodo');
+//
+//            // Client chat
+//            Route::group(['prefix'=>'{client}/chat', 'as' => 'chat.'], function () {
+//                Route::get('/', 'ChatController@show')->name('show');
+//                Route::post('/form', 'ChatController@form')->name('form');
+//                Route::post('/mark', 'ChatController@mark')->name('mark');
+//                Route::post('/', 'ChatController@create')->name('create');
+//            });
+//        });
+//    });
 
 // DeveloPro
     Route::group(['namespace' => 'Developro', 'prefix' => '/developro', 'as' => 'developro.'], function () {

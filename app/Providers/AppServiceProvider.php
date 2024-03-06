@@ -5,11 +5,10 @@ namespace App\Providers;
 use App\Models\City;
 use App\Models\InvestmentArticles;
 use App\Models\InvestmentPage;
-use App\Models\Rent;
+use App\Models\RodoRules;
 use App\Observers\CityObserver;
 use App\Observers\InvestmentArticleObserver;
 use App\Observers\InvestmentPageObserver;
-use App\Observers\RentObserver;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Schema;
@@ -92,9 +91,10 @@ class AppServiceProvider extends ServiceProvider
         });
 
         view()->composer('*', function ($view) {
-            $view->with('current_locale', app()->getLocale());
-            $view->with('available_locales', config('app.available_locales'));
-            $view->with('cities', City::orderBy('sort', 'ASC')->get());
+            //$view->with('current_locale', app()->getLocale());
+            //$view->with('available_locales', config('app.available_locales'));
+            //$view->with('cities', City::orderBy('sort', 'ASC')->get());
+            $view->with('rules', RodoRules::orderBy('sort')->whereStatus(1)->get());
 
             $currentRoute = Route::current();
             $view->with('currentRoute', $currentRoute);

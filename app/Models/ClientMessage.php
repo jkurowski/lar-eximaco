@@ -25,18 +25,33 @@ class ClientMessage extends Model
         'client_id',
         'message',
         'source',
+        'investment',
+        'building',
+        'floor',
+        'property',
+        'rooms',
+        'area',
         'ip',
-        'mark_at',
-        'arguments'
+        'mark_at'
     ];
+
+    public function investments()
+    {
+        return $this->hasOne(Investment::class, 'id', 'investment');
+    }
 
     public function answers()
     {
         return $this->hasMany(self::class, 'parent_id')->latest();
     }
 
+    public function utms()
+    {
+        return $this->hasMany(ClientMessageArgument::class, 'msg_id');
+    }
+
     public function client()
     {
-        return $this->belongsTo(Client::class, 'client_id');
+        return $this->belongsTo(Client::class);
     }
 }

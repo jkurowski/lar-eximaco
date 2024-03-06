@@ -21,14 +21,32 @@ Route::middleware(['restrictIp'])->group(function () {
     });
 });
 
-Route::group(['namespace' => 'Front', 'prefix' => '{locale?}', 'where' => ['locale' => '(?!admin)*[a-z]{2}'],], function() {
+//Route::group(['namespace' => 'Front', 'prefix' => '{locale?}', 'where' => ['locale' => '(?!admin)*[a-z]{2}'],], function() {
+Route::group(['namespace' => 'Front', 'middleware' => 'restrictIp', 'as' => 'front.'], function () {
     Route::get('/', 'IndexController@index')->name('index');
 
+    // Static pages
     Route::get('kontakt',
         'ContactController@index')->name('contact.index');
+    Route::post('/kontakt', 'ContactController@contact')->name('contact.form');
+    Route::post('/kontakt/{property}', 'ContactController@property')->name('contact.property');
 
-    Route::get('jak-kupic-mieszkanie',
-        'Static\IndexController@howbuy')->name('static.howbuy');
+    Route::get('inwestor',
+        'IndexController@index')->name('inwestor');
+
+    // Completed investment
+    Route::get('inwestycje-zrealizowane',
+        'IndexController@index')->name('completed');
+
+    Route::get('z/{slug}',
+        'IndexController@index')->name('completed.show');
+
+    // Current investment
+    Route::get('inwestycje-w-sprzedazy',
+        'IndexController@index')->name('current');
+
+    Route::get('i/{slug}',
+        'IndexController@index')->name('current.show');
 
     // Inline
     Route::group(['prefix'=>'/inline', 'as' => 'front.inline.'], function() {
