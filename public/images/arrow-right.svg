@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="59.999" height="59.999" viewBox="0 0 59.999 59.999">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.719" y1="-0.281" x2="0.527" y2="1.318" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="0.553" stop-color="#fff"/>
+      <stop offset="1" stop-color="#fff"/>
+    </linearGradient>
+  </defs>
+  <g id="Group_170" data-name="Group 170" transform="translate(4085 1380.999) rotate(180)">
+    <g id="Group_168" data-name="Group 168" transform="translate(4025 1321)">
+      <path id="Subtraction_13" data-name="Subtraction 13" d="M30,60A30.008,30.008,0,0,1,18.323,2.358,30.008,30.008,0,0,1,41.677,57.642,29.814,29.814,0,0,1,30,60ZM29.971,3.125A26.814,26.814,0,0,0,3.188,29.909v.183a26.783,26.783,0,0,0,53.566,0v-.183A26.814,26.814,0,0,0,29.971,3.125Z" fill="url(#linear-gradient)"/>
+    </g>
+    <g id="Group_169" data-name="Group 169" transform="translate(4058.9 1343) rotate(90)">
+      <line id="Line_3" data-name="Line 3" y1="7.9" x2="7.9" transform="translate(7.9)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="1.5"/>
+      <line id="Line_4" data-name="Line 4" x1="7.9" y1="7.9" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="1.5"/>
+    </g>
+  </g>
+</svg>
