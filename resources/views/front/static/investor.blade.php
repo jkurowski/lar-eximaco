@@ -186,7 +186,7 @@
                                             </div>
                                             <div class="col-md-7 col-xl-6">
                                                 <div class="investments-other__box-desc">
-                                                    <p class="section-header__subtitle">Rusiec</p>
+                                                    <p class="section-header__subtitle">{{ $r->city }}</p>
                                                     <h3 class="investments-other__title">{{ $r->name }}</h3>
                                                     <a href="#" class="my-link">Zobacz więcej</a>
                                                 </div>

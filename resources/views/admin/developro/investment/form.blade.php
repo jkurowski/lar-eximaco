@@ -71,12 +71,7 @@
                             @include('form-elements.html-input-text', ['label' => 'Adres inwestycji', 'name' => 'address', 'value' => $entry->address])
                         </div>
                         <div class="col-4">
-                            @include('form-elements.html-select', [
-                                    'label' => 'Miasto',
-                                    'name' => 'city',
-                                    'selected' => $entry->city,
-                                    'select' => $citiesMenu
-                                ])
+                            @include('form-elements.html-input-text', ['label' => 'Miasto', 'name' => 'city', 'value' => $entry->city])
                         </div>
                         <div class="col-4">
                             @include('form-elements.html-select', [

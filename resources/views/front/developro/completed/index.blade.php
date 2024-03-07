@@ -24,7 +24,7 @@
                         <div class="row">
                             <div class="col-xl-5 mb-5 mb-xl-0 align-self-center">
                                 <div class="section-header mb-3 aos-init aos-animate" data-aos="fade-in" data-aos-duration="700">
-                                    <p class="section-header__subtitle">Rusiec</p>
+                                    <p class="section-header__subtitle">{{ $r->city }}</p>
                                     <h2 class="section-header__title">{{ $r->name }}</h2>
                                 </div>
                                 <div data-aos="fade-in" data-aos-duration="700" data-aos-delay="300" class="aos-init">
@@ -67,7 +67,7 @@
                             </div>
                             <div class="col-xl-5 offset-xl-1 order-1 order-xl-2 mb-5 mb-xl-0 align-self-center">
                                 <div class="section-header mb-3" data-aos="fade-in" data-aos-duration="700">
-                                    <p class="section-header__subtitle">Grodzisk Mazowiecki</p>
+                                    <p class="section-header__subtitle">{{ $r->city }}</p>
                                     <h2 class="section-header__title">{{ $r->name }}</h2>
                                 </div>
                                 <div data-aos="fade-in" data-aos-duration="700" data-aos-delay="300">

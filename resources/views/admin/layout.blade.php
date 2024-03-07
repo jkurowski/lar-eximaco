@@ -97,14 +97,6 @@
                         <span> DeveloCMS </span>
                     </a>
                     <ul class="sub-menu">
-                        <li class="{{ Request::routeIs('admin.city.*') ? 'active' : '' }}">
-                            <a href="{{route('admin.city.index')}}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span> Miasta
-                            </a>
-                        </li>
-
                         <li class="{{ Request::routeIs('admin.developro.*') ? 'active' : '' }}">
                             <a href="{{route('admin.developro.investment.index')}}">
                                 <span class="menu-bullet">
