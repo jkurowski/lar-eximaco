@@ -16,6 +16,7 @@
                 </nav>
             </div>
         </section>
+
         <section class="first-sec sec-pad investor-section">
             <div class="container inline inline-tc">
                 <div class="row">
@@ -35,6 +36,7 @@
                 @endauth
             </div>
         </section>
+
         <section class="investor-about investments-list sec-pad radial-bg-2">
             <div class="container inline inline-tc">
                 <div class="section-header section-header--main text-center">
@@ -65,6 +67,7 @@
                 @endauth
             </div>
         </section>
+
         <section class="investor-about investments-list--reverse sec-pad">
             <div class="container inline inline-tc">
                 <div class="row">
@@ -91,6 +94,7 @@
                 @endauth
             </div>
         </section>
+
         <section class="investor-about investments-list sec-pad radial-bg-2">
             <div class="container inline inline-tc">
                 <div class="row">
@@ -168,69 +172,29 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="investments-other-slider">
-                            <div>
-                                <div class="investments-other__box">
-                                    <div class="row">
-                                        <div class="col-md-5 col-xl-6 position-relative align-self-center">
-                                            <div class="investments-other__blurred-photo">
-                                                <img src="{{ asset('uploads/inline/przy-plantach.jpg') }}" alt="zdjęcie inwestycji" width="224" height="224" loading="lazy">
+                            @foreach($investments as $r)
+                                <div>
+                                    <div class="investments-other__box">
+                                        <div class="row">
+                                            <div class="col-md-5 col-xl-6 position-relative align-self-center">
+                                                <div class="investments-other__blurred-photo">
+                                                    <img src="{{ asset('investment/thumbs/'.$r->file_thumb) }}" alt="{{ $r->name }} inwestycji" width="224" height="224" loading="lazy">
+                                                </div>
+                                                <div class="investments-other__photo">
+                                                    <img src="{{ asset('investment/thumbs/'.$r->file_thumb) }}" alt="{{ $r->name }} inwestycji" width="202" height="154" loading="lazy">
+                                                </div>
                                             </div>
-                                            <div class="investments-other__photo">
-                                                <img src="{{ asset('uploads/inline/przy-plantach.jpg') }}" alt="zdjęcie inwestycji" width="202" height="154" loading="lazy">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-7 col-xl-6">
-                                            <div class="investments-other__box-desc">
-                                                <p class="section-header__subtitle">Rusiec</p>
-                                                <h3 class="investments-other__title">Osiedle przy turkusowej</h3>
-                                                <a href="" class="my-link">Zobacz więcej</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="investments-other__box">
-                                    <div class="row">
-                                        <div class="col-md-5 col-xl-6 position-relative align-self-center">
-                                            <div class="investments-other__blurred-photo">
-                                                <img src="{{ asset('uploads/inline/przy-plantach.jpg') }}" alt="zdjęcie inwestycji" width="224" height="224" loading="lazy">
-                                            </div>
-                                            <div class="investments-other__photo">
-                                                <img src="{{ asset('uploads/inline/przy-plantach.jpg') }}" alt="zdjęcie inwestycji" width="202" height="154" loading="lazy">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-7 col-xl-6">
-                                            <div class="investments-other__box-desc">
-                                                <p class="section-header__subtitle">Rusiec</p>
-                                                <h3 class="investments-other__title">Osiedle przy turkusowej</h3>
-                                                <a href="" class="my-link">Zobacz więcej</a>
+                                            <div class="col-md-7 col-xl-6">
+                                                <div class="investments-other__box-desc">
+                                                    <p class="section-header__subtitle">Rusiec</p>
+                                                    <h3 class="investments-other__title">{{ $r->name }}</h3>
+                                                    <a href="#" class="my-link">Zobacz więcej</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div>
-                                <div class="investments-other__box">
-                                    <div class="row">
-                                        <div class="col-md-5 col-xl-6 position-relative align-self-center">
-                                            <div class="investments-other__blurred-photo">
-                                                <img src="{{ asset('uploads/inline/przy-plantach.jpg') }}" alt="zdjęcie inwestycji" width="224" height="224" loading="lazy">
-                                            </div>
-                                            <div class="investments-other__photo">
-                                                <img src="{{ asset('uploads/inline/przy-plantach.jpg') }}" alt="zdjęcie inwestycji" width="202" height="154" loading="lazy">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-7 col-xl-6">
-                                            <div class="investments-other__box-desc">
-                                                <p class="section-header__subtitle">Rusiec</p>
-                                                <h3 class="investments-other__title">Osiedle przy turkusowej</h3>
-                                                <a href="" class="my-link">Zobacz więcej</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
