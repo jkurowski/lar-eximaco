@@ -51,7 +51,7 @@
 @include('layouts.partials.cookies')
 
 @auth
-    @include('inline.modal')
+    @include('layouts.partials.inline')
 @endauth
 
 <!-- Styles -->

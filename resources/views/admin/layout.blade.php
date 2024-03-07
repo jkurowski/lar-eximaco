@@ -53,71 +53,26 @@
                                     <span class="bullet bullet-dot"></span>
                                 </span> Blokada dostępu</a>
                         </li>
-                        <li {{ Request::routeIs('admin.dictionary.*') ? 'class=active' : '' }}>
-                            <a href="{{ route('admin.dictionary.index') }}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span> Tłumaczenia</a>
-                        </li>
+
                         <li {{ Request::routeIs('admin.page.*') ? 'class=active' : '' }}>
                             <a href="{{ route('admin.page.index') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span> Strony</a>
                         </li>
-                        <li {{ Request::routeIs('admin.map.*') ? 'class=active' : '' }}>
-                            <a href="{{ route('admin.map.index') }}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span> Mapa</a>
-                        </li>
+
                         <li {{ Request::routeIs('admin.gallery.*') ? 'class=active' : '' }}>
                             <a href="{{ route('admin.gallery.index') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span> Galeria</a>
                         </li>
-                        <li {{ Request::routeIs('admin.article.*') ? 'class=active' : '' }}>
-                            <a href="{{ route('admin.article.index') }}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span> Blog</a>
-                        </li>
-                        <li {{ Request::routeIs('admin.news.*') ? 'class=active' : '' }}>
-                            <a href="{{ route('admin.news.index') }}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span> Aktualności</a>
-                        </li>
+
                         <li {{ Request::routeIs('admin.slider.*') ? 'class=active' : '' }}>
                             <a href="{{ route('admin.slider.index') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span> Slider</a>
-                        </li>
-                        <li {{ Request::routeIs('admin.promotion.*') ? 'class=active' : '' }}>
-                            <a href="{{ route('admin.promotion.index') }}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span> Promocje</a>
-                        </li>
-                        <li {{ Request::routeIs('admin.job.*') ? 'class=active' : '' }}>
-                            <a href="{{ route('admin.job.index') }}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span> Oferty pracy</a>
-                        </li>
-                        <li {{ Request::routeIs('admin.review.*') ? 'class=active' : '' }}>
-                            <a href="{{ route('admin.review.index') }}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span> Opinie</a>
-                        </li>
-                        <li {{ Request::routeIs('admin.awards.*') ? 'class=active' : '' }}>
-                            <a href="{{ route('admin.awards.index') }}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span> Nagrody</a>
                         </li>
                         <li class="d-none">
                             <a href="">
@@ -133,24 +88,7 @@
                         <span> DeveloCRM </span>
                     </a>
                     <ul class="sub-menu">
-                        <li {{ Request::routeIs('admin.crm.statistics.*') ? 'class=active' : '' }}>
-                            <a href="{{ route('admin.crm.statistics.index') }}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span> Statystyki</a>
-                        </li>
-                        <li {{ Request::routeIs('admin.crm.inbox.*') ? 'class=active' : '' }}>
-                            <a href="{{ route('admin.crm.inbox.index') }}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span> Leads</a>
-                        </li>
-                        <li {{ Request::routeIs('admin.rodo.*') ? 'class=active' : '' }}>
-                            <a href="{{ route('admin.rodo.clients.index') }}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span> Rodo</a>
-                        </li>
+
                     </ul>
                 </li>
                 <li class="active">
@@ -166,20 +104,7 @@
                                 </span> Miasta
                             </a>
                         </li>
-                        <li class="{{ Request::routeIs('admin.commercial.*') ? 'active' : '' }}">
-                            <a href="{{route('admin.commercial.index')}}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span> Obiekty komercyjne
-                            </a>
-                        </li>
-                        <li class="{{ Request::routeIs('admin.rent.*') ? 'active' : '' }}">
-                            <a href="{{route('admin.rent.index')}}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span> Obiekty na wynajem
-                            </a>
-                        </li>
+
                         <li class="{{ Request::routeIs('admin.developro.*') ? 'active' : '' }}">
                             <a href="{{route('admin.developro.investment.index')}}">
                                 <span class="menu-bullet">
@@ -230,26 +155,6 @@
 <script src="{{ asset('/js/bootstrap.bundle.min.js') }}" charset="utf-8"></script>
 <script src="{{ asset('/js/jquery-ui.min.js') }}" charset="utf-8"></script>
 <script src="{{ asset('/js/cms.js') }}" charset="utf-8"></script>
-<script>
-    $(document).ready(function() {
-        $(".btn-add-user").click((d) => {
-            d.preventDefault();
-            const modalHolder = $('#modalNewUser');
-            modalHolder.empty();
-
-            jQuery.ajax({
-                url: '{{ route('admin.crm.clients.create') }}',
-                success: function (response) {
-                    if (response) {
-                        modalHolder.append(response);
-                    } else {
-                        alert('Error');
-                    }
-                }
-            });
-        });
-    });
-</script>
 
 @stack('scripts')
 

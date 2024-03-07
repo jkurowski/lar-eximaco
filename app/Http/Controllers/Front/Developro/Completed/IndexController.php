@@ -12,7 +12,7 @@ class IndexController extends Controller
 {
     public function index()
     {
-        $page = Page::find(10);
+        $page = Page::find(1);
         $investments = Investment::whereStatus(2)->with('carousel')->get();
         return view('front.developro.completed.index', compact('page', 'investments'));
     }

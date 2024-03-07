@@ -17,26 +17,26 @@
             </div>
         </section>
         <section class="first-sec sec-pad investor-section">
-            <div class="container">
+            <div class="container inline inline-tc">
                 <div class="row">
                     <div class="col-xl-5">
                         <div class="section-header mb-3">
-                            <h1 class="section-header__title">Inwestor</h1>
+                            <h1 class="section-header__title" data-modaltytul="2">{!! getInline($array, 2, 'modaltytul') !!}</h1>
                         </div>
-                        <div class="inner-html desc-anim">
-                            <p><strong>Jesteśmy firmą rodzinną działającą w sektorze usług budowlanych od 35 lat.</strong></p>
-                            <p>Na przestrzeni lat zakres realizowanych przez nas usług uległ znacznemu rozszerzeniu, a my sami zaczęliśmy specjalizować się w kompleksowej budowie domów jednorodzinnych oraz wielorodzinnych. Inwestycje zrealizowane pod szyldem Eximaco znajdują się na terenie województwa mazowieckiego, gdzie skoncentrowana jest nasza działalność od wielu lat.</p>
-                            <p>Realizując zlecenie na budowę domu myślimy przede wszystkim o potrzebach naszych klientów, z tego powodu stawiamy na kompleksowość usługi i współpracę z najlepszymi specjalistami w branży. Jakość inwestycji jest dla nas równie ważna wówczas, gdy powstają całe osiedla domów. W takiej sytuacji staramy się budować tak, jakbyśmy sami mieli zamieszkać w jednym z nich.</p>
-                        </div>
+                        <div class="inner-html desc-anim" data-modaleditortext="2">
+                            {!! getInline($array, 2, 'modaleditortext') !!}</div>
                     </div>
                     <div class="col-xl-6 offset-xl-1 align-self-center photo-anim">
-                        <img src="{{ asset('uploads/inline/ludzie.png') }}" alt="ludzie" class="investor-photo" width="640" height="479" loading="eager">
+                        <img src="{{ getInline($array, 2, 'file') }}" alt="{{ getInline($array, 2, 'file_alt') }}" class="investor-photo" width="640" height="479" loading="eager" data-img="2">
                     </div>
                 </div>
+                @auth
+                    <div class="inline-btn"><button type="button" class="btn btn-primary btn-modal btn-sm" data-bs-toggle="modal" data-bs-target="#inlineModal" data-inline="2" data-hideinput="modaleditor,modallink,modallinkbutton" data-method="update" data-imgwidth="672" data-imgheight="503"></button></div>
+                @endauth
             </div>
         </section>
         <section class="investor-about investments-list sec-pad radial-bg-2">
-            <div class="container">
+            <div class="container inline inline-tc">
                 <div class="section-header section-header--main text-center">
                     <p class="section-header__subtitle" data-aos="fade-up" data-aos-duration="700">O nas</p>
                     <h2 class="section-header__title" data-aos="fade-up" data-aos-duration="700" data-aos-delay="300">Co nas wyróżnia?</h2>
@@ -44,73 +44,80 @@
                 <div class="row">
                     <div class="col-xl-5 mb-5 mb-xl-0 align-self-center">
                         <div class="section-header mb-3" data-aos="fade-in" data-aos-duration="700">
-                            <p class="section-header__subtitle">Podejście do klienta</p>
-                            <h2 class="section-header__title">Podejście do klienta</h2>
+                            <p class="section-header__subtitle" data-modaleditor="3">{!! getInline($array, 3, 'modaleditor') !!}</p>
+                            <h2 class="section-header__title" data-modaltytul="3">{!! getInline($array, 3, 'modaltytul') !!}</h2>
                         </div>
-                        <div class="inner-html mb-4" data-aos="fade-in" data-aos-duration="700" data-aos-delay="300">
-                            <p><strong> To co nas wyróżnia to podejście do klienta. Każdy jest dla nas indywidualną osobowością, która posiada własne potrzeby i możliwości.</strong> </p>
-                            <p>Nie budujemy na masową skalę. Cenimy sobie kameralne i przytulne inwestycje, które stają się dla naszych klientów ciepłym i rodzinnym domem na długie lata.</p>
+                        <div class="inner-html mb-4" data-aos="fade-in" data-aos-duration="700" data-aos-delay="300" data-modaleditortext="3">
+                            {!! getInline($array, 3, 'modaleditortext') !!}
                         </div>
                     </div>
                     <div class="col-xl-6 offset-xl-1 align-self-center position-relative" data-aos="fade-up" data-aos-duration="700">
                         <div class="investments-list__blurred-photo">
-                            <img src="{{ asset('uploads/inline/podejscie.jpg') }}" alt="ludzie" width="456" height="488" loading="lazy">
+                            <img src="{{ getInline($array, 3, 'file') }}" alt="ludzie" width="456" height="488" loading="lazy" data-img="3">
                         </div>
                         <div class="investments-list__photo">
-                            <img src="{{ asset('uploads/inline/podejscie.jpg') }}" alt="ludzie" width="440" height="360" loading="lazy">
+                            <img src="{{ getInline($array, 3, 'file') }}" alt="ludzie" width="440" height="360" loading="lazy" data-img="3">
                         </div>
                     </div>
                 </div>
+                @auth
+                    <div class="inline-btn"><button type="button" class="btn btn-primary btn-modal btn-sm" data-bs-toggle="modal" data-bs-target="#inlineModal" data-inline="3" data-hideinput="modallink,modallinkbutton" data-method="update" data-imgwidth="886" data-imgheight="720"></button></div>
+                @endauth
             </div>
         </section>
         <section class="investor-about investments-list--reverse sec-pad">
-            <div class="container">
+            <div class="container inline inline-tc">
                 <div class="row">
                     <div class="col-xl-6 order-2 order-xl-1 align-self-center position-relative" data-aos="fade-up" data-aos-duration="700">
                         <div class="investments-list__blurred-photo">
-                            <img src="{{ asset('uploads/inline/uslugi.jpg') }}" alt="kobieta" width="456" height="488" loading="lazy">
+                            <img src="{{ getInline($array, 4, 'file') }}" alt="kobieta" width="456" height="488" loading="lazy" data-img="4">
                         </div>
                         <div class="investments-list__photo">
-                            <img src="{{ asset('uploads/inline/uslugi.jpg') }}" alt="kobieta" width="440" height="360" loading="lazy">
+                            <img src="{{ getInline($array, 4, 'file') }}" alt="kobieta" width="440" height="360" loading="lazy" data-img="4">
                         </div>
                     </div>
                     <div class="col-xl-5 offset-xl-1 order-1 order-xl-2 mb-5 mb-xl-0 align-self-center">
                         <div class="section-header mb-3" data-aos="fade-in" data-aos-duration="700">
-                            <p class="section-header__subtitle">Budowa domu</p>
-                            <h2 class="section-header__title">Kompleksowe usługi</h2>
+                            <p class="section-header__subtitle" data-modaleditor="4">{!! getInline($array, 4, 'modaleditor') !!}</p>
+                            <h2 class="section-header__title" data-modaltytul="4">{!! getInline($array, 4, 'modaltytul') !!}</h2>
                         </div>
-                        <div class="inner-html mb-4" data-aos="fade-in" data-aos-duration="700" data-aos-delay="300">
-                            <p><strong>Wiemy jak trudnym procesem jest budowa domu. To wieloetapowy plan działania, który wymaga wiedzy i doświadczenia.</strong> </p>
-                            <p>W ten sposób możliwe jest skuteczne i sprawne przeprowadzenie całego procesu, począwszy od pozyskania zgody na budowę domu, poprzez przygotowanie fundamentów, na odbiorze kluczy kończąc. Z tego też powodu zapewniamy naszym klientom najwyższej jakości usługi, które realizujemy kompleksowo. Z nami budowa domu staje się łatwiejsza, a przejście przez wszelkie formalności nikomu nie są już straszne.</p>
+                        <div class="inner-html mb-4" data-aos="fade-in" data-aos-duration="700" data-aos-delay="300" data-modaleditortext="4">
+                            {!! getInline($array, 4, 'modaleditortext') !!}
                         </div>
                     </div>
                 </div>
+                @auth
+                    <div class="inline-btn"><button type="button" class="btn btn-primary btn-modal btn-sm" data-bs-toggle="modal" data-bs-target="#inlineModal" data-inline="4" data-hideinput="modallink,modallinkbutton" data-method="update" data-imgwidth="870" data-imgheight="708"></button></div>
+                @endauth
             </div>
         </section>
         <section class="investor-about investments-list sec-pad radial-bg-2">
-            <div class="container">
+            <div class="container inline inline-tc">
                 <div class="row">
                     <div class="col-xl-5 mb-5 mb-xl-0 align-self-center">
                         <div class="section-header mb-3" data-aos="fade-in" data-aos-duration="700">
-                            <p class="section-header__subtitle">Klient jest najważniejszy</p>
-                            <h2 class="section-header__title">Nasi partnerzy</h2>
+                            <p class="section-header__subtitle" data-modaleditor="5">{!! getInline($array, 5, 'modaleditor') !!}</p>
+                            <h2 class="section-header__title" data-modaltytul="5">{!! getInline($array, 5, 'modaltytul') !!}</h2>
                         </div>
-                        <div class="inner-html mb-4" data-aos="fade-in" data-aos-duration="700" data-aos-delay="300">
-                            <p><strong>W naszej branży współpraca z najlepszymi to gwarancja sukcesu.</strong> </p>
-                            <p>Z tego też powodu na przestrzeni lat wypracowaliśmy relacje partnerskie ze sprawdzonymi i doświadczonymi specjalistami, dzięki którym możemy zapewniać najlepszą jakość realizowanych projektów i inwestycji. W gronie naszych stałych partnerów odnaleźć można marki takie jak: Monier Brass, Isover, Termo Organika, Creation, Fakro, Velux, Solbet, Wienerberger oraz Ytong i Silka. Firmy te zapewniają nam dostęp do najlepszej klasy materiałów budowlanych i wykończeniowych.</p>
+                        <div class="inner-html mb-4" data-aos="fade-in" data-aos-duration="700" data-aos-delay="300" data-modaleditortext="5">
+                            {!! getInline($array, 5, 'modaleditortext') !!}
                         </div>
                     </div>
                     <div class="col-xl-6 offset-xl-1 align-self-center position-relative" data-aos="fade-up" data-aos-duration="700">
                         <div class="investments-list__blurred-photo">
-                            <img src="{{ asset('uploads/inline/partnerzy.jpg') }}" alt="ludzie" width="456" height="488" loading="lazy">
+                            <img src="{{ getInline($array, 5, 'file') }}" alt="ludzie" width="456" height="488" loading="lazy" data-img="5">
                         </div>
                         <div class="investments-list__photo">
-                            <img src="{{ asset('uploads/inline/partnerzy.jpg') }}" alt="ludzie" width="440" height="360" loading="lazy">
+                            <img src="{{ getInline($array, 5, 'file') }}" alt="ludzie" width="440" height="360" loading="lazy" data-img="5">
                         </div>
                     </div>
                 </div>
+                @auth
+                    <div class="inline-btn"><button type="button" class="btn btn-primary btn-modal btn-sm" data-bs-toggle="modal" data-bs-target="#inlineModal" data-inline="5" data-hideinput="modallink,modallinkbutton" data-method="update" data-imgwidth="886" data-imgheight="720"></button></div>
+                @endauth
             </div>
         </section>
+
         <section class="our-features sec-pad" data-aos="fade-in" data-aos-duration="700">
             <div class="container">
                 <div class="row">
@@ -151,9 +158,12 @@
 
         <section class="investments-other sec-pad">
             <div class="container">
-                <div class="section-header text-center">
-                    <p class="section-header__subtitle" data-aos="fade-up" data-aos-duration="700">Sprawdź również</p>
-                    <h2 class="section-header__title"  data-aos="fade-up" data-aos-duration="700" data-aos-delay="300">Realizowane inwestycje</h2>
+                <div class="section-header text-center inline inline-tc">
+                    <p class="section-header__subtitle" data-aos="fade-up" data-aos-duration="700" data-modaleditor="6">{!! getInline($array, 6, 'modaleditor') !!}</p>
+                    <h2 class="section-header__title"  data-aos="fade-up" data-aos-duration="700" data-aos-delay="300" data-modaltytul="6">{!! getInline($array, 6, 'modaltytul') !!}</h2>
+                    @auth
+                        <div class="inline-btn"><button type="button" class="btn btn-primary btn-modal btn-sm" data-bs-toggle="modal" data-bs-target="#inlineModal" data-inline="6" data-hideinput="modaleditortext,modallink,modallinkbutton,file,file_alt" data-method="update" data-imgwidth="886" data-imgheight="720"></button></div>
+                    @endauth
                 </div>
                 <div class="row">
                     <div class="col-12">

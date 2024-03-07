@@ -36,7 +36,7 @@ Route::group(['namespace' => 'Front', 'middleware' => 'restrictIp', 'as' => 'fro
 
     // Completed investment
     Route::get('inwestycje-zrealizowane',
-        'IndexController@index')->name('completed');
+        'Developro\Completed\IndexController@index')->name('completed');
 
     Route::get('z/{slug}',
         'IndexController@index')->name('completed.show');
@@ -60,6 +60,4 @@ Route::group(['namespace' => 'Front', 'middleware' => 'restrictIp', 'as' => 'fro
         Route::get('/{slug}', 'InvestmentController@index')->name('investment.index');
 
     });
-
-    Route::get('{uri}', 'MenuController@index')->where('uri', '([A-Za-z0-9\-\/]+)');
 });

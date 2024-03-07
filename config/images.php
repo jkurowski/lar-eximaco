@@ -7,8 +7,8 @@ return [
     |--------------------------------------------------------------------------
     */
     'investment' => [
-        'thumb_width' => 840,
-        'thumb_height' => 500,
+        'thumb_width' => 886,
+        'thumb_height' => 720,
         'logo_width' => 180,
         'logo_height' => 80,
         'header_width' => 1920,

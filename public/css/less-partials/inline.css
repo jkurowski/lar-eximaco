@@ -40,7 +40,7 @@ button:focus {
   margin: auto;
 }
 .inline-tc .inline-btn {
-  top: -3px;
+  top: 0;
   left: 0;
   right: 0;
   margin: auto;
@@ -156,10 +156,15 @@ button:focus {
 .modal-dialog {
   max-width: 950px;
 }
+.modal-header .close {
+  border: 0;
+  width: 36px;
+}
 .modal-dialog .form-control {
-  font-size: 14px;
+  font-size: 16px;
   border: 1px solid #D5D5D5;
   border-radius: 3px !important;
+  padding: 0.375rem 0.75rem;
 }
 .modal-dialog .btn {
   padding: 8px 23px;

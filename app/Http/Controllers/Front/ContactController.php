@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactFormRequest;
 
 use App\Mail\ChatSend;
+use App\Models\Inline;
 use App\Models\Page;
 use App\Repositories\Client\ClientRepository;
 use Illuminate\Support\Facades\Mail;
@@ -28,7 +29,10 @@ class ContactController extends Controller
 
     function index(){
         $page = Page::find(1);
-        return view('front.contact.index', ['page' => $page]);
+        return view('front.contact.index', [
+            'page' => $page,
+            'array' => Inline::getElements(1)
+        ]);
     }
 
     function property(ContactFormRequest $request, $id)

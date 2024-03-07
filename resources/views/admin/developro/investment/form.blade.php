@@ -14,7 +14,7 @@
                 <div class="card-head container">
                     <div class="row">
                         <div class="col-12 pl-0">
-                            <h4 class="page-title row"><i class="fe-book-open"></i><a href="{{route('admin.developro.investment.index')}}" class="p-0">Inwestycje</a><span class="d-inline-flex ml-2 mr-2">/</span>{{ $cardTitle }}</h4>
+                            <h4 class="page-title"><i class="fe-book-open"></i><a href="{{route('admin.developro.investment.index')}}" class="p-0">Inwestycje</a><span class="d-inline-flex ms-2 me-2">/</span>{{ $cardTitle }}</h4>
                         </div>
                     </div>
                 </div>
@@ -30,8 +30,8 @@
                                 'name' => 'type',
                                 'selected' => $entry->type,
                                 'select' => [
-                                    '1' => 'Inwestycja osiedlowa',
-                                    '2' => 'Inwestycja budynkowa',
+                                    //'1' => 'Inwestycja osiedlowa',
+                                    //'2' => 'Inwestycja budynkowa',
                                     '3' => 'Inwestycja z domami'
                             ]])
                         </div>
