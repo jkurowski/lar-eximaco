@@ -59,7 +59,7 @@ Route::group(['namespace' => 'Front', 'middleware' => 'restrictIp', 'as' => 'fro
         'Developro\Completed\IndexController@index')->name('completed');
 
     Route::get('z/{slug}',
-        'IndexController@index')->name('completed.show');
+        'Developro\Completed\IndexController@show')->name('completed.show');
 
     // Current investment
     Route::get('inwestycje-w-sprzedazy',

@@ -23,11 +23,11 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-xl-5 mb-5 mb-xl-0 align-self-center">
-                                <div class="section-header mb-3 aos-init aos-animate" data-aos="fade-in" data-aos-duration="700">
+                                <div class="section-header mb-3 @if($index > 0) aos-init aos-animate @endif" data-aos="fade-in" data-aos-duration="700">
                                     <p class="section-header__subtitle">{{ $r->city }}</p>
                                     <h2 class="section-header__title">{{ $r->name }}</h2>
                                 </div>
-                                <div data-aos="fade-in" data-aos-duration="700" data-aos-delay="300" class="aos-init">
+                                <div @if($index > 0) data-aos="fade-in" data-aos-duration="700" data-aos-delay="300" class="aos-init" @endif>
                                     <div class="inner-html mb-4">
                                         <p>{!! $r->entry_content !!}</p>
                                     </div>
@@ -43,7 +43,7 @@
                                         </div>
                                         @endif
                                     </div>
-                                    <a href="" class="project-btn project-btn--gray">Sprawdź</a>
+                                    <a href="{{ route('front.completed.show', $r->slug) }}" class="project-btn project-btn--gray">Sprawdź</a>
                                 </div>
                             </div>
                             <div class="col-xl-6 offset-xl-1 align-self-center position-relative aos-init aos-animate" data-aos="fade-up" data-aos-duration="700">
@@ -90,7 +90,7 @@
                                             </div>
                                         @endif
                                     </div>
-                                    <a href="" class="project-btn project-btn--gray">Sprawdź</a>
+                                    <a href="{{ route('front.completed.show', $r->slug) }}" class="project-btn project-btn--gray">Sprawdź</a>
                                 </div>
                             </div>
                         </div>

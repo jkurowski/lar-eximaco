@@ -16,4 +16,12 @@ class IndexController extends Controller
         $investments = Investment::whereStatus(2)->with('carousel')->get();
         return view('front.developro.completed.index', compact('page', 'investments'));
     }
+
+    public function show($slug)
+    {
+        $page = Page::find(1);
+        $investment = Investment::whereSlug($slug)->first();
+
+        return view('front.developro.completed.show', compact('page', 'investment'));
+    }
 }
