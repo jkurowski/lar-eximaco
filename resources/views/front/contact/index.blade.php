@@ -19,6 +19,7 @@
         <section class="first-sec cta cta-form sec-pad">
             @include('front.contact.form', [ 'page_name' => 'Kontakt'])
         </section>
+
         <section class="contact text-center text-sm-start sec-pad radial-bg-2">
             <div class="container inline inline-tc">
                 <div class="row">

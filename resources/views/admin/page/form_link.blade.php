@@ -72,7 +72,6 @@
                     </div>
                 </div>
             </div>
-            <input type="hidden" name="lang" value="{{$current_locale}}">
             @include('form-elements.submit', ['name' => 'submit', 'value' => 'Zapisz'])
         </form>
 @endsection

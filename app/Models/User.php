@@ -2,16 +2,17 @@
 
 namespace App\Models;
 
+use App\Notifications\PasswordResetNotification;
+use App\Notifications\UserChangeStatusNotification;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
-    use Notifiable;
-    use HasRoles;
-    protected static $logName = 'Użytkownicy';
+    use HasFactory, Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -22,6 +23,12 @@ class User extends Authenticatable
         'name',
         'surname',
         'email',
+        'phone',
+        'phone_additional',
+        'city',
+        'job_position',
+        'email',
+        'signature',
         'password',
         'active'
     ];
@@ -44,4 +51,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime'
     ];
+
+    /**
+     * Send the password reset notification.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token): void
+    {
+        $this->notify(new PasswordResetNotification($token));
+    }
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class, 'job_position', 'id');
+    }
 }

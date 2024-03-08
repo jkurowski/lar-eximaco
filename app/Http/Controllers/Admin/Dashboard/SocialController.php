@@ -18,7 +18,7 @@ class SocialController extends Controller
 
     public function index()
     {
-        return view('admin.dashboard.social.index');
+        return view('admin.settings.social.index');
     }
 
     public function store(SocialFormRequest $request)
@@ -30,6 +30,6 @@ class SocialController extends Controller
             $this->service->upload($request->file('og_file'));
         }
 
-        return redirect(route('admin.dashboard.social.index'))->with('success', 'Ustawienia zostały zapisane');
+        return redirect(route('admin.settings.social.index'))->with('success', 'Ustawienia zostały zapisane');
     }
 }

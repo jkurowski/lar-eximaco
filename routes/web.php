@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,25 @@ use Illuminate\Support\Facades\Route;
 */
 Route::middleware(['restrictIp'])->group(function () {
     Auth::routes();
+
+    Route::get('routes', function() {
+        \Artisan::call('route:list');
+        return '<pre>' . \Artisan::output() . '</pre>';
+    });
+
+    Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+        $request->fulfill();
+        return redirect('/login');
+    })->middleware(['auth', 'signed'])->name('verification.verify');
+
+    Route::get('/email/verify', function () {
+        return view('auth.verify-email');
+    })->middleware('auth')->name('verification.notice');
+
+    Route::post('/email/verification-notification', function (Request $request) {
+        $request->user()->sendEmailVerificationNotification();
+        return back()->with('message', 'Wiadomość z link aktywacyjnym wysłana!');
+    })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
     Route::get('routes', function() {
         \Artisan::call('route:list');
@@ -43,7 +63,7 @@ Route::group(['namespace' => 'Front', 'middleware' => 'restrictIp', 'as' => 'fro
 
     // Current investment
     Route::get('inwestycje-w-sprzedazy',
-        'IndexController@index')->name('current');
+        'Developro\Current\IndexController@index')->name('current');
 
     Route::get('i/{slug}',
         'IndexController@index')->name('current.show');

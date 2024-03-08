@@ -10,7 +10,7 @@
             <div class="container">
                 <nav style="--bs-breadcrumb-divider: '/';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Strona główna</a></li>
+                        <li class="breadcrumb-item"><a href="/">Strona główna</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Inwestycje zrealizowane</li>
                     </ol>
                 </nav>
@@ -32,12 +32,16 @@
                                         <p>{!! $r->entry_content !!}</p>
                                     </div>
                                     <div class="investments-list__info row mb-4">
+                                        @if($r->areas_amount)
                                         <div class="col-6 col-sm-4">
                                             <p>Mieszkania: {{ $r->areas_amount }}</p>
                                         </div>
+                                        @endif
+                                        @if($r->date_end)
                                         <div class="col-6 col-sm-4">
                                             <p>Rok: {{ $r->date_end }}</p>
                                         </div>
+                                        @endif
                                     </div>
                                     <a href="" class="project-btn project-btn--gray">Sprawdź</a>
                                 </div>
@@ -75,12 +79,16 @@
                                         <p>{!! $r->entry_content !!}</p>
                                     </div>
                                     <div class="investments-list__info row mb-4">
-                                        <div class="col-6 col-sm-4">
-                                            <p>Mieszkania: {{ $r->areas_amount }}</p>
-                                        </div>
-                                        <div class="col-6 col-sm-4">
-                                            <p>Rok: {{ $r->date_end }}</p>
-                                        </div>
+                                        @if($r->areas_amount)
+                                            <div class="col-6 col-sm-4">
+                                                <p>Mieszkania: {{ $r->areas_amount }}</p>
+                                            </div>
+                                        @endif
+                                        @if($r->date_end)
+                                            <div class="col-6 col-sm-4">
+                                                <p>Rok: {{ $r->date_end }}</p>
+                                            </div>
+                                        @endif
                                     </div>
                                     <a href="" class="project-btn project-btn--gray">Sprawdź</a>
                                 </div>

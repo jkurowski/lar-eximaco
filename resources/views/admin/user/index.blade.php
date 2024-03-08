@@ -58,7 +58,6 @@
             </div>
         </div>
     </div>
-    @routes('users')
     @push('scripts')
         <script src="{{ asset('/js/datatables.min.js') }}" charset="utf-8"></script>
         <script src="{{ asset('/js/bootstrap-select/bootstrap-select.min.js') }}" charset="utf-8"></script>

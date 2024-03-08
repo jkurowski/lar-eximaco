@@ -12,7 +12,7 @@ class PopupController extends Controller
 {
     public function index()
     {
-        return view('admin.dashboard.popup.index');
+        return view('admin.settings.popup.index');
     }
 
     public function store(PopupFormRequest $request)
@@ -20,7 +20,7 @@ class PopupController extends Controller
         $settings = Valuestore::make(storage_path('app/settings.json'));
         $settings->put($request->except(['_token', 'submit']));
 
-        return redirect(route('admin.dashboard.popup.index'))->with('success', 'Ustawienia zostały zapisane');
+        return redirect(route('admin.settings.popup.index'))->with('success', 'Ustawienia zostały zapisane');
     }
 
     public function update (PopupExitFormRequest $request)
@@ -28,11 +28,6 @@ class PopupController extends Controller
         $settings = Valuestore::make(storage_path('app/settings.json'));
         $settings->put($request->except(['_token', 'submit']));
 
-        return redirect(route('admin.dashboard.popup.show', ['popup' => 'exit']))->with('success', 'Ustawienia zostały zapisane');
-    }
-
-    public function show()
-    {
-        return view('admin.dashboard.popup.exit');
+        return redirect(route('admin.settings.popup.show', ['popup' => 'exit']))->with('success', 'Ustawienia zostały zapisane');
     }
 }
