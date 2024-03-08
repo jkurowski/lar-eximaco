@@ -40,8 +40,8 @@
                     <h4 class="site-footer_title">Menu</h4>
                     <ul>
                         <li><a href="{{ route('front.current') }}">Inwestycje w sprzedaży</a></li>
-                        <li><a href="{{ route('front.completed') }}">Inwestor</a></li>
-                        <li><a href="{{ route('front.investor') }}">Inwestycje zrealizowane</a></li>
+                        <li><a href="{{ route('front.completed') }}">Inwestycje zrealizowane</a></li>
+                        <li><a href="{{ route('front.investor') }}">Inwestor</a></li>
                         <li><a href="{{ route('front.contact.index') }}">Kontakt</a></li>
                     </ul>
                 </div>
