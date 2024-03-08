@@ -28,7 +28,8 @@
                         </div>
                         <div>
                             <div class="inner-html mb-4">
-                                <p>{!! $investment->entry_content !!}</p>
+                                <p><strong>{!! $investment->entry_content !!}</strong></p>
+                                <p>{!! $investment->content !!}</p>
                             </div>
                             <div class="investments-list__info row mb-4">
                                 @if($investment->areas_amount)
