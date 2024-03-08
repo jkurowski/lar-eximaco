@@ -7,7 +7,7 @@ use App\Models\Page;
 
 class MenuController extends Controller
 {
-    public function index($locale, $uri = null)
+    public function index($uri = null)
     {
         $page = Page::where('uri', $uri)->firstOrFail();
         $parent = Page::ancestorsOf($page->id)->first();

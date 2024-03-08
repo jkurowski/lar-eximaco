@@ -14,10 +14,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ps-xl-5">
-                    <a class="nav-link" href="inwestycje-w-sprzedazy">Inwestycje w sprzedaży</a>
-                    <a class="nav-link" href="inwestycje-zrealizowane">Inwestycje zrealizowane</a>
-                    <a class="nav-link" href="inwestor">Inwestor</a>
-                    <a class="nav-link" href="kontakt">Kontakt</a>
+                    <a class="nav-link" href="{{ route('front.current') }}">Inwestycje w sprzedaży</a>
+                    <a class="nav-link" href="{{ route('front.completed') }}">Inwestycje zrealizowane</a>
+                    <a class="nav-link" href="{{ route('front.investor') }}">Inwestor</a>
+                    <a class="nav-link" href="{{ route('front.contact.index') }}">Kontakt</a>
                 </div>
             </div>
         </nav>

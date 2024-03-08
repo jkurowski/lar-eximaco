@@ -66,7 +66,7 @@
                 </div>
             </div>
         </div>
-            <input type="hidden" name="lang" value="{{$current_locale}}">
+            <input type="hidden" name="lang" value="pl">
             @include('form-elements.submit', ['name' => 'submit', 'value' => 'Zapisz'])
         </form>
         @include('form-elements.tintmce')

@@ -1,30 +1,29 @@
-@extends('layouts.page', ['body_class' => 'menu-page'])
+@extends('layouts.page', ['body_class' => 'about-page'])
 
 @section('meta_title', $page->title)
 @section('seo_title', $page->meta_title)
 @section('seo_description', $page->meta_description)
 
-@section('pageheader')
-    @include('layouts.partials.page-header', ['page_title' => '', 'page' => $page, 'header_file' => $page->file_header])
-@stop
-
 @section('content')
-    <div id="page-content">
+    <main class="position-relative">
+        <section class="breadcrumb-page">
+            <div class="container">
+                <nav style="--bs-breadcrumb-divider: '/';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Strona główna</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ $page->title }}</li>
+                    </ol>
+                </nav>
+            </div>
+        </section>
+
         <div class="container">
             <div class="row">
-                @if($parent && $parent->id)
-                    <div class="col-4 pr-5">
-                        {!! App\Models\Page::sidemenu($parent->id) !!}
-                    </div>
-                @endif
-
-                <div @if($parent && $parent->id) class="col-8" @else class="col-12" @endif>
+                <div class="col-12">
+                    <h2 class="section-header__title">{{ $page->title }}</h2>
                     {!! parse_text($page->content) !!}
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 @endsection
-@push('scripts')
-
-@endpush
