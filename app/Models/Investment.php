@@ -182,6 +182,15 @@ class Investment extends Model
     }
 
     /**
+     * Get investment houses
+     * @return HasMany
+     */
+    public function houses(): HasMany
+    {
+        return $this->hasMany('App\Models\Property');
+    }
+
+    /**
      * Get investment properties
      * @return HasMany
      */

@@ -23,11 +23,11 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-xl-5 mb-5 mb-xl-0 align-self-center">
-                                <div class="section-header mb-3 aos-init aos-animate" data-aos="fade-in" data-aos-duration="700">
+                                <div class="section-header mb-3 @if($index > 0) aos-init aos-animate @endif" @if($index > 0) data-aos="fade-in" data-aos-duration="700" @endif>
                                     <p class="section-header__subtitle">{{ $r->city }}</p>
                                     <h2 class="section-header__title">{{ $r->name }}</h2>
                                 </div>
-                                <div data-aos="fade-in" data-aos-duration="700" data-aos-delay="300" class="aos-init">
+                                <div @if($index > 0) data-aos="fade-in" data-aos-duration="700" data-aos-delay="300" class="aos-init" @endif >
                                     <div class="inner-html mb-4">
                                         <p>{!! $r->entry_content !!}</p>
                                     </div>
@@ -43,10 +43,10 @@
                                             </div>
                                         @endif
                                     </div>
-                                    <a href="" class="project-btn project-btn--gray">Sprawdź</a>
+                                    <a href="{{ route('front.developro.investment.index', $r->slug) }}" class="project-btn project-btn--gray">Sprawdź</a>
                                 </div>
                             </div>
-                            <div class="col-xl-6 offset-xl-1 align-self-center position-relative aos-init aos-animate" data-aos="fade-up" data-aos-duration="700">
+                            <div class="col-xl-6 offset-xl-1 align-self-center position-relative @if($index > 0) aos-init aos-animate @endif" @if($index > 0) data-aos="fade-up" data-aos-duration="700" @endif>
                                 <div class="investments-list__blurred-photo">
                                     <img src="{{ asset('investment/thumbs/'.$r->file_thumb) }}" alt="{{ $r->name }}" width="456" height="488" loading="eager">
                                 </div>
@@ -90,7 +90,7 @@
                                             </div>
                                         @endif
                                     </div>
-                                    <a href="" class="project-btn project-btn--gray">Sprawdź</a>
+                                    <a href="{{ route('front.developro.investment.index', $r->slug) }}" class="project-btn project-btn--gray">Sprawdź</a>
                                 </div>
                             </div>
                         </div>
@@ -127,3 +127,17 @@
         </section>
     </main>
 @endsection
+@push('scripts')
+    <script type="text/javascript">
+        const map = L.map('map').setView([52.124160, 20.668000], 14);
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+            subdomains: 'abcd',
+            maxZoom: 20
+        }).addTo(map);
+
+        L.marker([52.124160, 20.668000]).addTo(map)
+            .bindPopup('<img src="{{ asset('images/logo-dark.svg') }}" width="73" height="27" alt="logo" class="mb-2"> <br> Przeskok 6 <br> 05-822 Milanówek')
+            .openPopup();
+    </script>
+@endpush

@@ -17,7 +17,7 @@
             </div>
         </section>
         <section class="first-sec cta cta-form sec-pad">
-            @include('front.contact.form', [ 'page_name' => 'Kontakt'])
+            @include('front.contact.form', ['page_name' => 'Kontakt'])
         </section>
 
         <section class="contact text-center text-sm-start sec-pad radial-bg-2">
@@ -44,3 +44,17 @@
         </section>
     </main>
 @endsection
+@push('scripts')
+    <script type="text/javascript">
+        const map = L.map('map').setView([52.124160, 20.668000], 14);
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+            subdomains: 'abcd',
+            maxZoom: 20
+        }).addTo(map);
+
+        L.marker([52.124160, 20.668000]).addTo(map)
+            .bindPopup('<img src="{{ asset('images/logo-dark.svg') }}" width="73" height="27" alt="logo" class="mb-2"> <br> Przeskok 6 <br> 05-822 Milanówek')
+            .openPopup();
+    </script>
+@endpush

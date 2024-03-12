@@ -5,13 +5,13 @@ if (! function_exists('roomStatusBadge')) {
     {
         switch ($number) {
             case '1':
-                return '<span class="status-badge status-1">Dostępne</span>';
+                return '<div class="offer-list-box__status offer-list-box__status--dostepny">Dostępne</div>';
             case '2':
-                return '<span class="status-badge status-2">Rezerwacja</span>';
+                return '<div class="offer-list-box__status offer-list-box__status--rezerwacja">Rezerwacja</div>';
             case '3':
-                return '<span class="status-badge status-3">Sprzedane</span>';
+                return '<div class="offer-list-box__status offer-list-box__status--sprzedany">Sprzedane</div>';
             case '4':
-                return '<span class="status-badge status-4">Wynajęte</span>';
+                return '<div class="offer-list-box__status offer-list-box__status--sprzedany">Wynajęte</div>';
         }
     }
 }

@@ -21,8 +21,8 @@
             <table align="center" cellpadding="0" cellspacing="0" border="0" width="660" style="margin:0 auto;width:660px;padding:0;border-collapse:collapse;background:white">
                 <tr>
                     <td style="font-family:Arial;font-size:14px;padding:25px 30px;line-height:24px">
-                        <p>Witaj <b>{{ $client->name }}</b>,</p>
-                        <p>{!! $request->message !!}</p>
+                        <p>Witaj,</p>
+                        <p>w systemie masz nową wiadomość wysłaną ze strony: </p>
                     </td>
                 </tr>
             </table>

@@ -15,7 +15,6 @@ Route::group([
     Route::post('gallery/set', 'Gallery\IndexController@sort')->name('gallery.sort');
     Route::post('image/set', 'Gallery\ImageController@sort')->name('image.sort');
     Route::post('box/set', 'Box\IndexController@sort')->name('box.sort');
-    Route::post('city/set', 'City\IndexController@sort')->name('city.sort');
     Route::post('invest-page/set', 'Developro\Page\IndexController@sort')->name('investment_page.sort');
 
     //Route::get('article/import', 'Article\IndexController@import')->name('article.import');
@@ -34,8 +33,7 @@ Route::group([
         'user' => 'User\IndexController',
         'role' => 'Role\IndexController',
         'greylist' => 'Greylist\IndexController',
-        'box'=> 'Box\IndexController',
-        'city'=> 'City\IndexController',
+        'box'=> 'Box\IndexController'
     ]);
 
     Route::get('dictionary/{slug}/{locale}/edit', 'Dictionary\IndexController@edit')->name('dictionary.edit');
@@ -116,6 +114,7 @@ Route::group([
             Route::resources([
                 '{investment}/page' => 'Page\IndexController',
                 '{investment}/article' => 'Article\IndexController',
+                '{investment}/section' => 'Section\IndexController',
                 '{investment}/plan' => 'Plan\IndexController',
                 '{investment}/search' => 'Search\IndexController',
                 '{investment}/houses' => 'House\HouseController',

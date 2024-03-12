@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Award;
+use App\Models\Image;
 use App\Models\Inline;
 use App\Models\Investment;
 use App\Models\News;
@@ -21,6 +22,7 @@ class IndexController extends Controller
     public function index()
     {
         $sliders = Slider::all()->sortBy("sort");
+        $images = Image::where('gallery_id', 1)->orderBy("sort")->get();
 
         $obligation = RodoSettings::find(1);
         $rules = RodoRules::orderBy('sort')->whereStatus(1)->get();
@@ -57,7 +59,8 @@ class IndexController extends Controller
             'investments_soon',
             'investments_planned',
             'array',
-            'isAdmin'
+            'isAdmin',
+            'images'
         ));
     }
 }

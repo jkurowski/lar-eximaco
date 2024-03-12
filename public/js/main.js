@@ -78,8 +78,8 @@ $(window).scroll(function(){
   $('.investment-slider').slick({
     dots: false,
     arrows:true,
-    prevArrow: "<img src='images/arrow-left.svg' class='slick-prev slick-arrow'>",
-    nextArrow: "<img src='images/arrow-right.svg' class='slick-next slick-arrow'>",
+    prevArrow: "<img src='/images/arrow-left.svg' class='slick-prev slick-arrow'>",
+    nextArrow: "<img src='/images/arrow-right.svg' class='slick-next slick-arrow'>",
     speed: 300,
     centerMode: true,
     centerPadding: '28%',
@@ -99,8 +99,8 @@ $(window).scroll(function(){
   $('.advantages-slider').slick({
     dots: false,
     arrows:true,
-    prevArrow: "<img src='images/arrow-left.svg' class='slick-prev slick-arrow'>",
-    nextArrow: "<img src='images/arrow-right.svg' class='slick-next slick-arrow'>",
+    prevArrow: "<img src='/images/arrow-left.svg' class='slick-prev slick-arrow'>",
+    nextArrow: "<img src='/images/arrow-right.svg' class='slick-next slick-arrow'>",
     speed: 300,
     centerMode: true,
     centerPadding: '28%',
@@ -120,8 +120,8 @@ $(window).scroll(function(){
   $('.similar-offers-slider').slick({
     dots: false,
     arrows:true,
-    prevArrow: "<img src='images/arrow-left.svg' class='slick-prev slick-arrow'>",
-    nextArrow: "<img src='images/arrow-right.svg' class='slick-next slick-arrow'>",
+    prevArrow: "<img src='/images/arrow-left.svg' class='slick-prev slick-arrow'>",
+    nextArrow: "<img src='/images/arrow-right.svg' class='slick-next slick-arrow'>",
     autoplay:true,
     autoplaySpeed: 3000,
     speed: 300,
@@ -141,8 +141,8 @@ $(window).scroll(function(){
   $('.investments-other-slider').slick({
     dots: false,
     arrows:true,
-    prevArrow: "<img src='images/arrow-left.svg' class='slick-prev slick-arrow'>",
-    nextArrow: "<img src='images/arrow-right.svg' class='slick-next slick-arrow'>",
+    prevArrow: "<img src='/images/arrow-left.svg' class='slick-prev slick-arrow'>",
+    nextArrow: "<img src='/images/arrow-right.svg' class='slick-next slick-arrow'>",
     autoplay:true,
     autoplaySpeed: 3000,
     speed: 300,

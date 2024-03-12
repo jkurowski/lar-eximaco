@@ -71,12 +71,12 @@ return [
         'height' => 1200
     ],
     'property_thumb' => [
-        'width' => 830,
-        'height' => 830
+        'width' => 660,
+        'height' => 660
     ],
     'property_list' => [
-        'width' => 300,
-        'height' => 300
+        'width' => 210,
+        'height' => 210
     ],
 
     /*
@@ -158,9 +158,9 @@ return [
 
     'gallery' => [
         'big_width' => 1360,
-        'big_height' => 765,
-        'thumb_width' => 520,
-        'thumb_height' => 293,
+        'big_height' => 1020,
+        'thumb_width' => 760,
+        'thumb_height' => 570,
         'thumb_width_2' => 386,
         'thumb_height_2' => 217,
         'file_path' => 'uploads/gallery/images/',

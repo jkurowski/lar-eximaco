@@ -34,11 +34,6 @@ Route::middleware(['restrictIp'])->group(function () {
         $request->user()->sendEmailVerificationNotification();
         return back()->with('message', 'Wiadomość z link aktywacyjnym wysłana!');
     })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
-
-    Route::get('routes', function() {
-        \Artisan::call('route:list');
-        return '<pre>' . \Artisan::output() . '</pre>';
-    });
 });
 
 //Route::group(['namespace' => 'Front', 'prefix' => '{locale?}', 'where' => ['locale' => '(?!admin)*[a-z]{2}'],], function() {
@@ -66,7 +61,7 @@ Route::group(['namespace' => 'Front', 'middleware' => 'restrictIp', 'as' => 'fro
         'Developro\Current\IndexController@index')->name('current');
 
     Route::get('i/{slug}',
-        'IndexController@index')->name('current.show');
+        'Developro\Current\IndexController@show')->name('current.show');
 
     // Inline
     Route::group(['prefix'=>'/inline', 'as' => 'front.inline.'], function() {
@@ -77,7 +72,10 @@ Route::group(['namespace' => 'Front', 'middleware' => 'restrictIp', 'as' => 'fro
 
     // DeveloPro
     Route::group(['namespace' => 'Developro', 'prefix' => '/i', 'as' => 'developro.'], function () {
-        Route::get('/{slug}', 'InvestmentController@index')->name('investment.index');
+        Route::get('/{slug}/plan-inwestycji', 'InvestmentController@index')->name('investment.index');
+        Route::get('/{slug}/kontakt', 'Contact\IndexController@index')->name('investment.contact');
+        Route::post('/{slug}/kontakt', 'Contact\IndexController@form')->name('investment.contact.form');
 
+        Route::get('/{slug}/d/{property}', 'InvestmentHouseController@index')->name('house.index');
     });
 });

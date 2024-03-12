@@ -11,7 +11,6 @@ class InvestmentArticleService
 {
     public function upload(string $title, UploadedFile $file, object $model, bool $delete = false)
     {
-
         if ($delete) {
             if (File::isFile(public_path('investment/articles/' . $model->file))) {
                 File::delete(public_path('investment/articles/' . $model->file));

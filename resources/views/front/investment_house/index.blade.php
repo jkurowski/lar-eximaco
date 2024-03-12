@@ -1,165 +1,163 @@
-@extends('layouts.page', ['body_class' => 'investments investment-house'])
+@extends('layouts.page', ['body_class' => 'completed-page'])
+
+@section('meta_title', $page->title)
+@section('seo_title', $page->meta_title)
+@section('seo_description', $page->meta_description)
 
 @section('content')
-<div id="property-header">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h1>{{$property->name}}`12</h1>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container pt-5">
-    <div class="row">
-        <div class="col-4">
-            <div class="property-desc">
-                <ul class="list-unstyled">
-                    <li>Pokoje:<span>{{$property->rooms}}</span></li>
-                    <li>Powierzchnia:<span>{{$property->area}} m<sup>2</sup></span></li>
-                    @if($property->garden_area)<li>Ogrórek:<span>{{$property->garden_area}}</span></li>@endif
-                    @if($property->balcony_area)<li>Balkon:<span>{{$property->balcony_area}}</span></li>@endif
-                    @if($property->terrace_area)<li>Taras:<span>{{$property->terrace_area}}</span></li>@endif
-                    @if($property->loggia_area)<li>Loggia:<span>{{$property->loggia_area}}</span></li>@endif
-                    @if($property->parking_space)<li>Miejsce postojowe:<span>{{$property->parking_space}}</span></li>@endif
-                    @if($property->garage)<li>Garaż:<span>{{$property->garage}}</span></li>@endif
-                </ul>
-                @if($property->file_pdf)
-                    <a href="/investment/property/pdf/{{$property->file_pdf}}" class="mt-4 bttn bttn-icon">Pobierz plan .pdf <i class="las la-file-pdf"></i></a>
-                @endif
-            </div>
-        </div>
-        <div class="col-8 d-flex justify-content-center pl-5">
+    <main class="position-relative">
+        <section class="breadcrumb-page">
             <div class="container">
-                <div class="row pb-4">
-                    <div class="col-4">@if($prev_house) <a href="{{route('front.investment.house.index', [$investment, $prev_house->id])}}" class="bttn bttn-sm">{{$prev_house->name}}</a> @endif</div>
-                    <div class="col-4"></div>
-                    <div class="col-4 d-flex justify-content-end">@if($next_house) <a href="{{route('front.investment.house.index', [$investment, $next_house->id])}}" class="bttn bttn-sm">{{$next_house->name}}</a> @endif</div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="property-img ps-5">
-                            @if($property->file)
-                                <a href="/investment/property/{{$property->file}}"><img src="{{ asset('/investment/property/thumbs/'.$property->file) }}" alt="{{$property->name}}"></a>
+                <nav style="--bs-breadcrumb-divider: '/';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Strona główna</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('front.current') }}">Inwestycje w sprzedaży</a></li>
+                        <li class="breadcrumb-item active"><a href="{{ route('front.current.show', $investment->slug) }}">{{ $investment->name }}</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('front.developro.investment.index', $investment->slug) }}">Plan inwestycji</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{$property->name}}</li>
+                    </ol>
+                </nav>
+            </div>
+        </section>
+
+        <section class="first-sec apartment-desc">
+            <div class="container">
+                <nav class="pt-4 pb-5 single-apartment-nav">
+                    <div class="row">
+                        <div class="col-6 d-flex align-items-center">
+                            @if($prev_house)
+                            <a href="{{route('front.developro.house.index', [$investment->slug, $prev_house->id])}}"><img src="{{ asset('images/arrow-left.svg') }}" alt="strzałka w lewo" width="28" height="28" loading="eager"><span class="ms-3">{{$prev_house->name}}</span></a>
+                            @endif
+                        </div>
+
+                        <div class="col-6 d-flex align-items-center justify-content-end">
+                            @if($next_house)
+                            <a href="{{route('front.developro.house.index', [$investment->slug, $next_house->id])}}"><span class="me-3">{{$next_house->name}}</span><img src="{{ asset('images/arrow-right.svg') }}" alt="strzałka w prawo" width="28" height="28" loading="eager"></a>
                             @endif
                         </div>
                     </div>
-                </div>
+                </nav>
             </div>
-        </div>
-    </div>
-</div>
-
-<div class="property-form">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="section-text text-center pb-4">
-                    <h2>Wyślij zapytanie</h2>
-                </div>
-            </div>
-            <div class="col-12">
-                @if (session('success'))
-                    <div class="alert alert-success border-0">
-                        {{ session('success') }}
-                    </div>
-                @endif
-                @if (session('warning'))
-                    <div class="alert alert-warning border-0">
-                        {{ session('warning') }}
-                    </div>
-                @endif
-                <form method="post" action="{{route('contact.property', $property->id)}}" class="">
-                    {{ csrf_field() }}
-                    <div class="row">
-                        <div class="col-4 form-input">
-                            <label for="form_name">Imię <span class="text-danger">*</span></label>
-                            <input name="form_name" id="form_name" class="validate[required] form-control @error('form_name') is-invalid @enderror" type="text" value="{{ old('form_name') }}">
-
-                            @error('name')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <div class="section-header">
+                            <p class="section-header__subtitle">{{ $investment->city }} - {{ $investment->name }}</p>
+                            <h1 class="section-header__title">{{ $property->name }}</h1>
                         </div>
-                        <div class="col-4 form-input">
-                            <label for="form_email">E-mail <span class="text-danger">*</span></label>
-                            <input name="form_email" id="form_email" class="validate[required] form-control @error('form_email') is-invalid @enderror" type="text" value="{{ old('form_email') }}">
-
-                            @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                        <div class="col-4 form-input">
-                            <label for="form_phone">Telefon</label>
-                            <input name="form_phone" id="form_phone" class="form-control" type="text" value="{{ old('form_phone') }}">
-                        </div>
-
-                        <div class="col-12 mt-2 form-input">
-                            <label for="form_subject">Temat wiadomości <span class="text-danger">*</span></label>
-                            <input name="form_subject" id="form_subject" class="validate[required] form-control @error('form_subject') is-invalid @enderror" type="text" value="{{ old('form_subject') }}">
-
-                            @error('subject')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-
-                        <div class="col-12 mt-3 form-input">
-                            <label for="form_message">Treść wiadomości <span class="text-danger">*</span></label>
-                            <textarea rows="5" cols="1" name="form_message" id="form_message" class="validate[required] form-control @error('form_message') is-invalid @enderror">{{ old('form_message') }}</textarea>
-
-                            @error('message')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                        <div class="col-12">
-                            <div class="obowiazek mt-3">
-                                <p>Na podstawie z art. 13 ogólnego rozporządzenia o ochronie danych osobowych z dnia 27 kwietnia 2016 r. (Dz. Urz. UE L 119 z 04.05.2016) informujemy, iż przesyłając wiadomość za pomocą formularza kontaktowego wyrażacie Państwo zgodę na (<a href="" target="_blank">polityka informacyjna</a>):</p>
+                        <div class="desc-anim">
+                            <div class="inner-html">
+                                {!! $investment->entry_content !!}
                             </div>
+                            <table class="table mb-5">
+                                <tbody>
+                                <tr>
+                                    <td>Pokoje</td>
+                                    <td class="text-end">{{ $property->rooms }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Powierzchnia</td>
+                                    <td class="text-end">{{ $property->area }}<sup>2</sup></td>
+                                </tr>
+                                <tr>
+                                    <td>Aneks / Kuchnia</td>
+                                    <td class="text-end">aneks kuchenny</td>
+                                </tr>
+                                <tr>
+                                    <td>Wystawa okienna: </td>
+                                    <td class="text-end">północny-wschód <br>południowy-zachód</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="offer-list-box__pdf d-inline-block mb-5 mb-xl-0 me-3 me-sm-5">
+                                <img src="{{ asset('images/pdf.svg') }}" alt="pdf ikona" class="me-3" width="21" height="24" loading="eager">  <a href="{{ asset('investment/property/pdf/'.$property->file_pdf) }}" target="_blank">Pobierz pdf</a>
+                            </div>
+                            <div class="d-inline-block">
+                                <a href="#formularz-kontaktowy" class="project-btn project-btn--gray">Zapytaj o ofertę</a>
+                            </div>
+
                         </div>
-                        @foreach ($rules as $r)
-                            <div class="col-12">
-                                <div class="regulki">
-                                    <input name="rule_{{$r->id}}" id="rule_{{$r->id}}" value="1" type="checkbox" @if($r->required === 1) class="validate[required]" @endif data-prompt-position="topLeft:0">
-                                    <label for="zgoda_{{$r->id}}" class="rules-text">{!! $r->text !!}</label>
+                    </div>
+                    <div class="col-lg-6 offset-lg-1 photo-anim">
+                        @if($property->file)
+                            <a href="{{ asset('/investment/property/'.$property->file) }}" class="swipebox">
+                                <picture>
+                                    <source type="image/webp" srcset="{{ asset('/investment/property/thumbs/webp/'.$property->file_webp) }}">
+                                    <source type="image/jpeg" srcset="{{ asset('/investment/property/thumbs/'.$property->file) }}">
+                                    <img src="{{ asset('/investment/property/thumbs/'.$property->file) }}" alt="{{$property->name}}" loading="eager" class="img-thumb">
+                                </picture>
+                            </a>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="similar-offers sec-pad">
+            <div class="container">
+                <div class="section-header text-center">
+                    <p class="section-header__subtitle" data-aos="fade-up" data-aos-duration="700">Zobacz również</p>
+                    <h2 class="section-header__title"  data-aos="fade-up" data-aos-duration="700" data-aos-delay="300">Podobne mieszkania</h2>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="similar-offers-slider">
+                            @foreach($similar as $s)
+                            <div>
+                                <div class="offer-list-box status-sprzedany position-relative">
+                                    <div class="row align-items-center">
+                                        <div class="col-lg-4 offer-list-box__img">
+                                            @if($s->file)
+                                                <a href="{{route('front.developro.house.index', ['slug' => $investment->slug, 'property' => $s])}}">
+                                                    <picture>
+                                                        <source type="image/webp" srcset="/investment/property/list/webp/{{$s->file_webp}}">
+                                                        <source type="image/jpeg" srcset="/investment/property/list/{{$s->file}}">
+                                                        <img src="/investment/property/list/{{$s->file}}" alt="Plan {{$s->name}}" loading="lazy">
+                                                    </picture>
+                                                </a>
+                                            @endif
+                                        </div>
+                                        <div class="col-lg-8">
+                                            <div class="row">
+                                                <div class="col-lg-4 offer-list-box__name">
+                                                    <p class="mb-2">{{ $s->name_list }}</p>
+                                                    <p class="offer-list-box__name--big mb-0">{{ $s->number }}</p>
+                                                </div>
+                                                <div class="col-6 col-lg-4 offer-list-box__rooms text-center">
+                                                    <p class="">Pokoje</p>
+                                                    <p class="mb-0">{{ $s->rooms }}</p>
+                                                </div>
+                                                <div class="col-6 col-lg-4 offer-list-box__area text-center">
+                                                    <p class="">Powierzchnia</p>
+                                                    <p class="mb-0">{{ $s->area }} m<sup>2</sup></p>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-4 align-items-center">
+                                                <div class="col-6 col-lg-5 text-center offer-list-box__pdf d-flex align-items-center justify-content-center justify-content-lg-start">
+                                                    <img src="{{ asset('images/pdf.svg') }}" alt="Ikonka pliku .pdf" class="me-3"  width="21" height="24" loading="lazy">
+                                                    <a href="{{ asset('investment/property/pdf/'.$s->file_pdf) }}" target="_blank">Pobierz pdf</a>
+                                                </div>
+                                                <div class="col-6 col-lg-7 text-center">
+                                                    <a href="{{route('front.developro.house.index', ['slug' => $investment->slug, 'property' => $s])}}" class="project-btn project-btn--gray"><span>Sprawdź</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="offer-list-box__status-container">
+                                        {!! roomStatusBadge($s->status) !!}
+                                    </div>
                                 </div>
                             </div>
-                        @endforeach
-                    </div>
-                    <div class="row row-form-submit">
-                        <div class="col-12 pt-3">
-                            <div class="input text-center">
-                                <input name="form_page" type="hidden" value="{{$investment->name}} - {{$property->name}}">
-                                <script type="text/javascript">
-                                    document.write("<button class=\"bttn\" type=\"submit\">WYŚLIJ</button>");
-                                </script>
-                                <noscript><p><b>Do poprawnego działania, Java musi być włączona.</b><p></noscript>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
-        </div>
-    </div>
-</div>
+        </section>
+
+        <section id="formularz-kontaktowy" class="cta cta-form sec-pad">
+            @include('front.contact.form', ['page_name' => 'Kontakt'])
+        </section>
+
+    </main>
 @endsection
-@push('scripts')
-    <script src="{{ asset('/js/validation.js') }}" charset="utf-8"></script>
-    <script src="{{ asset('/js/pl.js') }}" charset="utf-8"></script>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $(".validateForm").validationEngine({
-                validateNonVisibleFields: true,
-                updatePromptsPosition:true,
-                promptPosition : "topRight:-137px"
-            });
-        });
-    </script>
-@endpush

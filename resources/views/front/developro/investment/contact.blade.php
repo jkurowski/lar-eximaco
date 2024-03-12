@@ -1,94 +1,157 @@
-@extends('layouts.page', ['body_class' => 'investment-contact no-bottom'])
+@extends('layouts.page', ['body_class' => 'completed-page'])
 
 @section('meta_title', $page->title)
 @section('seo_title', $page->meta_title)
 @section('seo_description', $page->meta_description)
 
-@section('pageheader')
-    @include('layouts.partials.developro-header', [
-    'investmentName' => $investment->name,
-    'investmentSlug' => $investment->slug,
-    'investmentPages' => $investment->pages,
-    'investmentLogo' => $investment->file_logo,
-    'investmentHeader' => $investment->file_header,
-    'header_file' => 'zrealizowane.jpg'
-    ])
-@stop
-
 @section('content')
-    <div id="page-content">
-        <div class="container">
-            @if($investment->id <> 5)
-            <div class="row">
-                <div class="col-12 col-xl-4">
-                    <div class="contact-box">
-                        {!! $investment_page->content !!}
-                    </div>
-                </div>
-                <div class="col-12 col-xl-8">
-                    <div class="ps-0 ps-xl-3 ps-xxl-5">
-                        @include('front.contact.form', ['page_name' => $investment->name.' - Kontakt'])
-                        <style>#contactForm {background:none}</style>
-                    </div>
-                </div>
+    <main class="position-relative">
+        <section class="breadcrumb-page">
+            <div class="container">
+                <nav style="--bs-breadcrumb-divider: '/';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Strona główna</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('front.current') }}">Inwestycje w sprzedaży</a></li>
+                        <li class="breadcrumb-item active"><a href="{{ route('front.current.show', $investment->slug) }}">{{ $investment->name }}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Plan inwestycji</li>
+                    </ol>
+                </nav>
             </div>
-            @else
-            <div class="row">
-                <div class="col-12 text-center">
-                    <h1 class="rostemary brown"><span>Kontakt</span></h1>
-                </div>
-            </div>
+        </section>
 
-            <div class="row mt-3 mt-sm-5">
-                <div class="col-12 col-xxl-4 order-2 order-xxl-1">
-                    <div class="contact-box">
-                        <h2>BIURO SPRZEDAŻY</h2>
-                        <p>ul. Żelazna 4,</p>
-                        <p>10-419 Olsztyn</p>
-                        <p>&nbsp;</p>
-                        <p>Godziny otwarcia:</p>
-                        <p>pn.-pt. 9:00 - 17:00</p>
-                        <ul class="mb-0 list-unstyled icon-list-contact">
-                            <li><img src="{{ asset('images/envelop-icon-svg.svg') }}" alt=""> <a href="mailto:mieszkania@ippon.group">mieszkania@ippon.group</a></li>
+        <section class="first-sec investment-details project-tabs sec-pad radial-bg-2">
+            <div class="container mt-4">
+                <div class="section-header text-center mb-3">
+                    <p class="section-header__subtitle">Dostępne domy</p>
+                    <h1 class="section-header__title">{{ $investment->name }}</h1>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-9 mx-auto">
+                        <ul class="nav nav-tabs" id="detailsTab" role="tablist">
+                            <li class="nav-item col-6 col-sm-4" role="presentation">
+                                <a class="nav-link" id="details1-tab" href="{{ route('front.current.show', $investment->slug) }}">
+                                    <img src="{{ asset('images/opis.svg') }}" alt="plik" width="25" height="25" loading="eager">
+                                    <span>Wybierz</span>
+                                    <strong>Opis inwestycji</strong>
+                                </a>
+                            </li>
+                            <li class="nav-item col-6 col-sm-4" role="presentation">
+                                <a class="nav-link" id="details2-tab" href="{{ route('front.developro.investment.index', $investment->slug) }}">
+                                    <img src="{{ asset('images/dostepne.svg') }}" alt="dom" width="25" height="25" loading="eager">
+                                    <span>Wybierz</span>
+                                    <strong>Dostępne domy</strong>
+                                </a>
+                            </li>
+                            <li class="nav-item col-sm-4" role="presentation">
+                                <a class="nav-link active" id="details3-tab" href="{{ route('front.developro.investment.contact', $investment->slug) }}">
+                                    <img src="{{ asset('images/kontakt.svg') }}" alt="avatar" width="25" height="25" loading="eager">
+                                    <span>Wybierz</span>
+                                    <strong>Kontakt</strong>
+                                </a>
+                            </li>
                         </ul>
-                        <a href="https://maps.app.goo.gl/Sv3KkJU2Dpxm9gX87" class="bttn bttn-icon mt-5" target="_blank">JAK DOJECHAĆ <i class="ms-3 las la-chevron-circle-right"></i></a>
-                    </div>
-                </div>
-                <div class="col-12 col-xxl-8 order-1 order-xxl-2 mb-4 mb-xxl-0">
-                    <div class="d-flex align-items-center justify-content-center justify-content-lg-start">
-                        <img src="{{ asset('/images/contact-img.jpg') }}" class="golden-border d-none d-lg-block" alt="">
-                        <div class="ps-0 ps-lg-5 sellers text-center text-lg-start">
-                            <h2>Sylwia Sokal</h2>
-                            <a href="mailto:s.sokal@ippon.Group">s.sokal@ippon.group</a>
-                            <a href="tel:+48724222323"><strong>+48 724 222 323</strong></a>
-                            <hr>
-                            <h2>Elżbieta Kalinowska</h2>
-                            <a href="mailto:e.kalinowska@ippon.group">e.kalinowska@ippon.group</a>
-                            <a href="tel:+48609884219"><strong>+48 609 884 219</strong></a>
-                        </div>
                     </div>
                 </div>
             </div>
-            @endif
-        </div>
-
-        @if($investment->id == 5)
-            <div id="contactForm">
-                <div class="container">
-                    <div class="row pt-5 mt-0 mt-sm-5">
-                        <div class="col-12 text-center">
-                            <h2 class="slow-header"><span class="abuget brown">Masz pytania?</span> <span class="rostemary">Napisz do nas!</span></h2>
-                        </div>
-                    </div>
-
+            <div class="container">
+                <div class="tab-content" id="detailsTabContent">
                     <div class="row">
-                        <div class="col-12">
-                            @include('front.contact.form', ['page_name' => $investment->name.' - Kontakt'])
+                        @if($investment_page->active)
+                        <div class="col-11 col-lg-9 mx-auto">
+                            {!! parse_text($investment_page->content) !!}
                         </div>
-                        <style>#contactForm #contactForm {background:none}</style>
+                        @endif
+                        <div class="col-11 col-lg-9 mx-auto cta__box">
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    @if (session('success'))
+                                        <div class="alert alert-success border-0">
+                                            {{ session('success') }}
+                                        </div>
+                                    @endif
+                                    @if (session('warning'))
+                                        <div class="alert alert-warning border-0">
+                                            {{ session('warning') }}
+                                        </div>
+                                    @endif
+                                    <form method="post" action="" class="contact-form validateForm">
+                                        {{ csrf_field() }}
+                                        <div class="box-anim mb-3">
+                                            <label for="name" class="lab-anim">Imię i Nazwisko / Nazwa firmy</label>
+                                            <input name="form_name" type="text" class="form-control validate[required] @error('form_name') is-invalid @enderror" id="name" value="{{ old('form_name') }}">
+                                            @error('form_name')
+                                            <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                            @enderror
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col box-anim">
+                                                <label for="phone" class="lab-anim">Telefon</label>
+                                                <input name="form_phone" type="tel" class="form-control validate[required] @error('form_phone') is-invalid @enderror" id="phone" value="{{ old('form_phone') }}">
+                                                @error('form_phone')
+                                                <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                                @enderror
+                                            </div>
+                                            <div class="col box-anim">
+                                                <label for="email" class="lab-anim">Adres e-mail</label>
+                                                <input name="form_email" type="email" class="form-control validate[required] @error('form_email') is-invalid @enderror" id="email" value="{{ old('form_email') }}">
+                                                @error('form_email')
+                                                <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="mb-4 box-anim">
+                                            <label for="message" class="lab-anim">Wiadomość</label>
+                                            <textarea name="form_message" id="message" class="form-control validate[required] @error('form_message') is-invalid @enderror" rows="2" maxlength="3000" required>{{ old('form_message') }}</textarea>
+                                            @error('form_message')
+                                            <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                            @enderror
+                                        </div>
+
+                                        @foreach ($rules as $r)
+                                            <div class="mb-3 form-check position-relative @error('rule_'.$r->id) is-invalid @enderror">
+                                                <input name="rule_{{$r->id}}" type="checkbox" class="form-check-input @if($r->required === 1) validate[required] @endif" id="rule_{{$r->id}}">
+                                                <label class="form-check-label form-check-label--check" for="rule_{{$r->id}}">{!! $r->text !!}</label>
+                                                @error('rule_'.$r->id)
+                                                <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                                @enderror
+                                            </div>
+                                        @endforeach
+                                        <div class="text-center text-sm-end">
+                                            <script type="text/javascript">
+                                                document.write("<button type=\"submit\" class=\"project-btn project-btn--gray\"><span>Wyślij</span></button>");
+                                            </script>
+                                            <noscript>Do poprawnego działania, Java musi być włączona.</noscript>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        @endif
-    </div>
+        </section>
+    </main>
 @endsection
+@push('scripts')
+    <script src="{{ asset('js/validation.js') }}" charset="utf-8"></script>
+    <script src="{{ asset('js/pl.js') }}" charset="utf-8"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".validateForm").validationEngine({
+                validateNonVisibleFields: true,
+                updatePromptsPosition:true,
+                promptPosition : "topRight:-137px"
+            });
+        });
+        @if (session('success') || session('warning') || $errors->any())
+        $(window).load(function() {
+            const aboveHeight = $('header').outerHeight();
+            $('html, body').stop().animate({
+                scrollTop: $('.validateForm').offset().top-aboveHeight
+            }, 1500, 'easeInOutExpo');
+        });
+        @endif
+    </script>
+@endpush

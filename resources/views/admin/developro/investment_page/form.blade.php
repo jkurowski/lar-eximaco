@@ -22,10 +22,10 @@
                             @include('form-elements.back-route-button')
                             <div class="card-body control-col12">
                                 <div class="row w-100 form-group">
-                                    @include('form-elements.html-select', ['label' => 'Status', 'name' => 'active', 'selected' => $entry->active, 'select' => ['1' => 'Pokaż na liście', '0' => 'Ukryj na liście']])
+                                    @include('form-elements.html-select', ['label' => 'Pokaż tekst', 'name' => 'active', 'selected' => $entry->active, 'select' => ['1' => 'Tak', '0' => 'Nie']])
                                 </div>
 
-                                <div class="row w-100 form-group">
+                                <div class="row w-100 form-group d-none">
                                     @include('form-elements.html-select', ['label' => 'Formularz kontaktowy', 'name' => 'contact_form', 'selected' => $entry->contact_form, 'select' => ['0' => 'Nie', '1' => 'Tak']])
                                 </div>
 

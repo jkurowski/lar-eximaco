@@ -7,9 +7,11 @@ use App\Http\Requests\InvestmentFormRequest;
 use App\Models\City;
 use App\Models\Gallery;
 use App\Models\Investment;
+use App\Models\Property;
 use App\Repositories\InvestmentRepository;
 use App\Services\InvestmentService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 // CMS
 
@@ -119,4 +121,29 @@ class IndexController extends Controller
         $this->repository->delete($id);
         return response()->json(['status' => 'deleted'], 201);
     }
+
+//    public function show()
+//    {
+//
+//        $inwestycje_powierzchnia = DB::table('inwestycje_powierzchnia')->get();
+//
+//        foreach ($inwestycje_powierzchnia as $key => $inwestycja){
+//            $property = new Property();
+//
+//            $property->investment_id = $inwestycja->id_inwest;
+//            $property->name = 'Dom '.$inwestycja->numer;
+//            $property->name_list = 'Dom';
+//            $property->number = $inwestycja->numer;
+//            $property->area = $inwestycja->metry;
+//            $property->rooms = $inwestycja->pokoje;
+//            $property->status = $inwestycja->status;
+//            $property->cords = $inwestycja->cords;
+//            $property->html = $inwestycja->html;
+//            $property->file_pdf = $inwestycja->pdf;
+//            $property->number_order = $key + 1;
+//
+//            $property->save();
+//        }
+//
+//    }
 }

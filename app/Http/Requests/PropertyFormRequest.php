@@ -24,11 +24,11 @@ class PropertyFormRequest extends FormRequest
      */
     protected function prepareForValidation()
     {
-        if($this->route('floor')->id){
-            $this->merge([
-                'floor_id' => $this->route('floor')->id
-            ]);
-        }
+//        if($this->route('floor')->id){
+//            $this->merge([
+//                'floor_id' => $this->route('floor')->id
+//            ]);
+//        }
 
         $this->merge([
             'investment_id' => $this->route('investment')->id
