@@ -23,6 +23,18 @@
                         <div class="row w-100 form-group">
                             @include('form-elements.html-input-text', ['label' => 'Nazwa', 'name' => 'name', 'value' => $entry->name, 'required' => 1])
                         </div>
+                        <div class="row w-100 form-group">
+                            @include('form-elements.html-input-text', ['label' => 'Opis galerii', 'name' => 'text', 'value' => $entry->text, 'required' => 1])
+                        </div>
+                        <div class="row w-100 form-group">
+                            @include('form-elements.html-input-file', [
+                                'label' => 'Ikonka',
+                                'sublabel' => 'Obrazek bez skalowania',
+                                'name' => 'file',
+                                'file' => $entry->file,
+                                'file_preview' => config('images.gallery.preview_file_path')
+                            ])
+                        </div>
                     </div>
                 </div>
             </div>

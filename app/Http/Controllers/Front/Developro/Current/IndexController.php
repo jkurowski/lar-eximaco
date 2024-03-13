@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front\Developro\Current;
 
 use App\Http\Controllers\Controller;
+use App\Models\Gallery;
 use App\Models\Inline;
 use App\Models\Investment;
 use App\Models\InvestmentSections;
@@ -24,6 +25,9 @@ class IndexController extends Controller
         $investment = Investment::whereSlug($slug)->first();
         $sections = InvestmentSections::where('investment_id', $investment->id)->get();
 
-        return view('front.developro.current.show', compact('page', 'investment', 'sections'));
+        $galleryIdsArray = explode(',', $investment->galleries);
+        $galleries = Gallery::whereIn('id', $galleryIdsArray)->with('photos')->get();
+
+        return view('front.developro.current.show', compact('page', 'investment', 'sections', 'galleries'));
     }
 }

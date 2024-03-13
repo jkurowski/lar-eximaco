@@ -142,32 +142,9 @@
                     </div>
 
                     <div class="row w-100 mb-4">
-                        @include('form-elements.html-select', [
-                                'label' => 'Karuzela jako miniaturka',
-                                'name' => 'carousel_id',
-                                'selected' => $entry->carousel_id,
-                                'select' => $galleryList
-                            ])
-                    </div>
-
-                    <div class="row w-100 mb-4">
-                        @include('form-elements.html-input-file', [
-                            'label' => 'Logo',
-                            'sublabel' => '(wymiary: '.config('images.investment.logo_width').'px / '.config('images.investment.logo_height').'px)',
-                            'name' => 'logo',
-                            'file' => $entry->file_logo,
-                            'file_preview' => config('images.investment.preview_logofile_path')
-                            ])
-                    </div>
-
-                    <div class="row w-100 mb-4">
-                        @include('form-elements.html-input-file', [
-                            'label' => 'Nagłówek',
-                            'sublabel' => '(wymiary: '.config('images.investment.header_width').'px / '.config('images.investment.header_height').'px)',
-                            'name' => 'header',
-                            'file' => $entry->file_header,
-                            'file_preview' => config('images.investment.header_file_path')
-                            ])
+                        <div class="col-12">
+                            @include('form-elements.html-input-text', ['label' => 'Galerie', 'sublabel'=> 'Wpisz numery id galerii, oddzielając je przecinkami, bez spacji.', 'name' => 'galleries', 'value' => $entry->galleries])
+                        </div>
                     </div>
 
                     <div class="row w-100 mb-4">

@@ -27,7 +27,7 @@ class InvestmentFormRequest extends FormRequest
         return [
             'type' => 'integer',
             'status' => 'integer',
-            'carousel_id' => 'integer',
+            'galleries' => '',
             'name' => 'required|string|min:5|max:100',
             'contact_form' => 'boolean',
             'developro' => 'boolean',

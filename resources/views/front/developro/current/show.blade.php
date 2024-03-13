@@ -101,286 +101,38 @@
             </div>
             <div class="container">
                 <ul class="nav nav-tabs" id="galleryTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="gallery1-tab" data-bs-toggle="tab" data-bs-target="#gallery1" type="button" role="tab" aria-controls="gallery1" aria-selected="true">
-                            <img src="img/kanapa.svg" alt="kanapa" loading="lazy">
-                            <span>Wizualizacja</span>
-                            <strong>Pokoje i salon</strong>
-                        </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="gallery2-tab" data-bs-toggle="tab" data-bs-target="#gallery2" type="button" role="tab" aria-controls="gallery2" aria-selected="false">
-                            <img src="img/kuchnia.svg" alt="kuchnia" loading="lazy">
-                            <span>Wizualizacja</span>
-                            <strong>Kuchnia</strong>
-                        </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="gallery3-tab" data-bs-toggle="tab" data-bs-target="#gallery3" type="button" role="tab" aria-controls="gallery3" aria-selected="false">
-                            <img src="img/wanna.svg" alt="wanna" loading="lazy">
-                            <span>Wizualizacja</span>
-                            <strong>Łazienka</strong>
-                        </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="gallery4-tab" data-bs-toggle="tab" data-bs-target="#gallery4" type="button" role="tab" aria-controls="gallery4" aria-selected="false">
-                            <img src="img/dom.svg" alt="dom" loading="lazy">
-                            <span>Wizualizacja</span>
-                            <strong>Zewnątrz</strong>
-                        </button>
-                    </li>
+                    @foreach($galleries as $key => $g)
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link @if($key == 0) active @endif" id="gallery{{ $g->id }}-tab" data-bs-toggle="tab" data-bs-target="#gallery{{ $g->id }}" type="button" role="tab" aria-controls="gallery{{ $g->id }}" aria-selected="true">
+                                <img src="{{ asset('uploads/gallery/'.$g->file) }}" alt="Ikonka galerii {{ $g->name }}" loading="lazy">
+                                <span>Wizualizacja</span>
+                                <strong>{{ $g->name }}</strong>
+                            </button>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
             <div class="container">
                 <div class="tab-content" id="galleryTabContent">
-                    <div class="tab-pane active" id="gallery1" role="tabpanel" aria-labelledby="gallery1-tab">
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <div class="border-gradient-photo">
-                                    <a href="img/g1.jpg" class="glightbox">
-                                        <img src="img/g1.jpg" alt="Wizualizacja" class="gallery-photo" loading="lazy">
-                                    </a>
+                    @foreach($galleries as $key => $g)
+                    <div class="tab-pane @if($key == 0) active @endif" id="gallery{{ $g->id }}" role="tabpanel" aria-labelledby="gallery{{ $g->id }}-tab">
+                        <div class="row justify-content-center">
+                            @foreach($g->photos as $p)
+                                <div class="col-lg-4">
+                                    <div class="border-gradient-photo">
+                                        <a href="/uploads/gallery/images/{{$p->file}}" class="swipebox" rel="gallery-{{ $g->id }}" title="">
+                                            <picture>
+                                                <source type="image/webp" srcset="{{asset('uploads/gallery/images/thumbs/webp/'.$p->file_webp) }}">
+                                                <source type="image/jpeg" srcset="{{asset('uploads/gallery/images/thumbs/'.$p->file) }}">
+                                                <img src="{{asset('uploads/gallery/images/thumbs/'.$p->file) }}" alt="{{ $p->name }}" width="520" height="293">
+                                            </picture>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="border-gradient-photo">
-                                    <a href="img/g2.jpg" class="glightbox">
-                                        <img src="img/g2.jpg" alt="Wizualizacja" class="gallery-photo" loading="lazy">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="border-gradient-photo">
-                                    <a href="img/g3.jpg" class="glightbox">
-                                        <img src="img/g3.jpg" alt="Wizualizacja" class="gallery-photo" loading="lazy">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="border-gradient-photo">
-                                    <a href="img/g4.jpg" class="glightbox">
-                                        <img src="img/g4.jpg" alt="Wizualizacja" class="gallery-photo" loading="lazy">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row row-even">
-                            <div class="col-lg-4">
-                                <div class="border-gradient-photo">
-                                    <a href="img/g21.jpg" class="glightbox">
-                                        <img src="img/g21.jpg" alt="Wizualizacja" class="gallery-photo" loading="lazy">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="border-gradient-photo">
-                                    <a href="img/g22.jpg" class="glightbox">
-                                        <img src="img/g22.jpg" alt="Wizualizacja" class="gallery-photo" loading="lazy">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="border-gradient-photo">
-                                    <a href="img/g23.jpg" class="glightbox">
-                                        <img src="img/g23.jpg" alt="Wizualizacja" class="gallery-photo" loading="lazy">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="border-gradient-photo">
-                                    <a href="img/g24.jpg" class="glightbox">
-                                        <img src="img/g24.jpg" alt="Wizualizacja" class="gallery-photo" loading="lazy">
-                                    </a>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
-                    <div class="tab-pane" id="gallery2" role="tabpanel" aria-labelledby="gallery2-tab">
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <div class="border-gradient-photo">
-                                    <a href="img/g1.jpg" class="glightbox">
-                                        <img src="img/g1.jpg" alt="Wizualizacja" class="gallery-photo" loading="lazy">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="border-gradient-photo">
-                                    <a href="img/g2.jpg" class="glightbox">
-                                        <img src="img/g2.jpg" alt="Wizualizacja" class="gallery-photo" loading="lazy">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="border-gradient-photo">
-                                    <a href="img/g3.jpg" class="glightbox">
-                                        <img src="img/g3.jpg" alt="Wizualizacja" class="gallery-photo" loading="lazy">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="border-gradient-photo">
-                                    <a href="img/g4.jpg" class="glightbox">
-                                        <img src="img/g4.jpg" alt="Wizualizacja" class="gallery-photo" loading="lazy">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row row-even">
-                            <div class="col-lg-4">
-                                <div class="border-gradient-photo">
-                                    <a href="img/g21.jpg" class="glightbox">
-                                        <img src="img/g21.jpg" alt="Wizualizacja" class="gallery-photo" loading="lazy">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="border-gradient-photo">
-                                    <a href="img/g22.jpg" class="glightbox">
-                                        <img src="img/g22.jpg" alt="Wizualizacja" class="gallery-photo" loading="lazy">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="border-gradient-photo">
-                                    <a href="img/g23.jpg" class="glightbox">
-                                        <img src="img/g23.jpg" alt="Wizualizacja" class="gallery-photo" loading="lazy">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="border-gradient-photo">
-                                    <a href="img/g24.jpg" class="glightbox">
-                                        <img src="img/g24.jpg" alt="Wizualizacja" class="gallery-photo" loading="lazy">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane" id="gallery3" role="tabpanel" aria-labelledby="gallery3-tab">
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <div class="border-gradient-photo">
-                                    <a href="img/g1.jpg" class="glightbox">
-                                        <img src="img/g1.jpg" alt="Wizualizacja" class="gallery-photo" loading="lazy">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="border-gradient-photo">
-                                    <a href="img/g2.jpg" class="glightbox">
-                                        <img src="img/g2.jpg" alt="Wizualizacja" class="gallery-photo" loading="lazy">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="border-gradient-photo">
-                                    <a href="img/g3.jpg" class="glightbox">
-                                        <img src="img/g3.jpg" alt="Wizualizacja" class="gallery-photo" loading="lazy">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="border-gradient-photo">
-                                    <a href="img/g4.jpg" class="glightbox">
-                                        <img src="img/g4.jpg" alt="Wizualizacja" class="gallery-photo" loading="lazy">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row row-even">
-                            <div class="col-lg-4">
-                                <div class="border-gradient-photo">
-                                    <a href="img/g21.jpg" class="glightbox">
-                                        <img src="img/g21.jpg" alt="Wizualizacja" class="gallery-photo" loading="lazy">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="border-gradient-photo">
-                                    <a href="img/g22.jpg" class="glightbox">
-                                        <img src="img/g22.jpg" alt="Wizualizacja" class="gallery-photo" loading="lazy">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="border-gradient-photo">
-                                    <a href="img/g23.jpg" class="glightbox">
-                                        <img src="img/g23.jpg" alt="Wizualizacja" class="gallery-photo" loading="lazy">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="border-gradient-photo">
-                                    <a href="img/g24.jpg" class="glightbox">
-                                        <img src="img/g24.jpg" alt="Wizualizacja" class="gallery-photo" loading="lazy">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="gallery4" role="tabpanel" aria-labelledby="gallery4-tab">
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <div class="border-gradient-photo">
-                                    <a href="img/g1.jpg" class="glightbox">
-                                        <img src="img/g1.jpg" alt="Wizualizacja" class="gallery-photo" loading="lazy">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="border-gradient-photo">
-                                    <a href="img/g2.jpg" class="glightbox">
-                                        <img src="img/g2.jpg" alt="Wizualizacja" class="gallery-photo" loading="lazy">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="border-gradient-photo">
-                                    <a href="img/g3.jpg" class="glightbox">
-                                        <img src="img/g3.jpg" alt="Wizualizacja" class="gallery-photo" loading="lazy">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="border-gradient-photo">
-                                    <a href="img/g4.jpg" class="glightbox">
-                                        <img src="img/g4.jpg" alt="Wizualizacja" class="gallery-photo" loading="lazy">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row row-even">
-                            <div class="col-lg-4">
-                                <div class="border-gradient-photo">
-                                    <a href="img/g21.jpg" class="glightbox">
-                                        <img src="img/g21.jpg" alt="Wizualizacja" class="gallery-photo" loading="lazy">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="border-gradient-photo">
-                                    <a href="img/g22.jpg" class="glightbox">
-                                        <img src="img/g22.jpg" alt="Wizualizacja" class="gallery-photo" loading="lazy">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="border-gradient-photo">
-                                    <a href="img/g23.jpg" class="glightbox">
-                                        <img src="img/g23.jpg" alt="Wizualizacja" class="gallery-photo" loading="lazy">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="border-gradient-photo">
-                                    <a href="img/g24.jpg" class="glightbox">
-                                        <img src="img/g24.jpg" alt="Wizualizacja" class="gallery-photo" loading="lazy">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </section>
