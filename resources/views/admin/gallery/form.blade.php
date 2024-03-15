@@ -32,7 +32,7 @@
                                 'sublabel' => 'Obrazek bez skalowania',
                                 'name' => 'file',
                                 'file' => $entry->file,
-                                'file_preview' => config('images.gallery.preview_file_path')
+                                'file_preview' => config('images.gallery.preview_gallery_icon')
                             ])
                         </div>
                     </div>

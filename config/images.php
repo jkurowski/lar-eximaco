@@ -167,6 +167,7 @@ return [
         'thumb_file_path' => 'uploads/gallery/images/thumbs/',
         'thumb_file_path_2' => 'uploads/gallery/images/thumbs2/',
         'preview_file_path' => 'uploads/gallery/images/thumbs/',
+        'preview_gallery_icon' => 'uploads/gallery/',
     ],
 
     /*
