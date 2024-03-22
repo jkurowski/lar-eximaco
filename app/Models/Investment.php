@@ -178,7 +178,7 @@ class Investment extends Model
      */
     public function properties(): HasMany
     {
-        return $this->hasMany('App\Models\Property');
+        return $this->hasMany('App\Models\Property')->orderBy('number_order');
     }
 
     /**
@@ -187,7 +187,7 @@ class Investment extends Model
      */
     public function houses(): HasMany
     {
-        return $this->hasMany('App\Models\Property');
+        return $this->hasMany('App\Models\Property')->orderBy('number_order');
     }
 
     /**
