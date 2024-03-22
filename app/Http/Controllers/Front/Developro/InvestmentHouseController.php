@@ -35,8 +35,8 @@ class InvestmentHouseController extends Controller
         return view('front.investment_house.index', [
             'investment' => $investment,
             'property' => $property,
-            'next_house' => $property->findNext($investment->id, $property->id),
-            'prev_house' => $property->findPrev($investment->id, $property->id),
+            'next_house' => $property->findNext($investment->id, $property->number_order),
+            'prev_house' => $property->findPrev($investment->id, $property->number_order),
             'rules' => RodoRules::orderBy('sort')->whereStatus(1)->get(),
             'page' => $page,
             'similar' => $similar
