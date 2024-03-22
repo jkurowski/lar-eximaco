@@ -17,6 +17,7 @@
                         <thead class="thead-default">
                         <tr>
                             <th>#</th>
+                            <th>Pozycja</th>
                             <th>Nazwa</th>
                             <th class="text-center">Status</th>
                             <th class="text-center">Pokoje</th>
@@ -32,6 +33,7 @@
                         @foreach ($investment->properties as $index => $p)
                             <tr id="recordsArray_{{ $p->id }}">
                                 <th class="position" scope="row">{{ $index+1 }}</th>
+                                <td>{{ $p->number_order }}</td>
                                 <td>{{ $p->name }}</td>
                                 <td><span class="badge room-list-status-{{ $p->status }}">{{ roomStatus($p->status) }}</span></td>
                                 <td class="text-center">{{ $p->rooms }}</td>
