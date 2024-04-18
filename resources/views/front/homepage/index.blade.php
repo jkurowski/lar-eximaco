@@ -12,13 +12,13 @@
                 <img src="{{ asset('images/ow-tlo.png') }}" class="hero-slider__img-bg" width="667" height="800" alt="osiedle" loading="eager">
                 <div  class="hero-slider__img-et">
                     <p class="hero-slider__img-et-title">Osiedle wygodne</p>
-                    <p class="hero-slider__img-et-desc">98,53 m2 / 4 pokoje</p>
+                    <p class="hero-slider__img-et-desc">128,55 m<sup>2</sup> / 4 pokoje</p>
                 </div>
                 <div class="container">
                     <div class="row">
                         <div class="col-md-5 col-xxl-6 hero-slider__text">
                             <h2 class="hero-slider__heading text-color">Osiedle Wygodne</h2>
-                            <p class="hero-slider__description">Osiedle Wygodne zlokalizowane jest w Grodzisku Mazowieckim przy ulicy Kazimierza Pułaskiego 14.</p>
+                            <p class="hero-slider__description">Osiedle Wygodne zlokalizowane jest w Grodzisku Mazowieckim przy ulicy Kazimierza Pułaskiego.</p>
                             <a href="/i/osiedle-wygodne" class="hero-slider__btn project-btn">Sprawdź</a>
                             <a href="#inwestycje" class="hero-slider__scroll">
                                 <span class="hero-slider__scroll-text">Zjedź niżej</span>

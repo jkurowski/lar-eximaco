@@ -39,7 +39,7 @@
                 <img src="{{ asset('images/ow-page.png') }}" class="hero-slider__img photo-anim" width="1180" height="500" alt="osiedle" loading="eager">
                 <div  class="hero-slider__img-et">
                     <p class="hero-slider__img-et-title">Osiedle wygodne</p>
-                    <p class="hero-slider__img-et-desc">98,53 m2 / 4 pokoje</p>
+                    <p class="hero-slider__img-et-desc">128,55 m<sup>2</sup> / 4 pokoje</p>
                 </div>
             </div>
         </section>
