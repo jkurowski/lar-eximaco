@@ -35,6 +35,10 @@
 
 @include('layouts.partials.cookies')
 
+@auth
+    @include('layouts.partials.inline')
+@endauth
+
 <!-- Styles -->
 <link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet">
 <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
