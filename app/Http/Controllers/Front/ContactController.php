@@ -42,9 +42,10 @@ class ContactController extends Controller
             Mail::to(settings()->get("page_email"))->send(new MailSend($request));
             (new \App\Models\RodoClient)->saveOrCreate($request);
         }
+
         return redirect()->back()->with(
             'success',
-            'Twoja wiadomość została wysłana. W najbliższym czasie skontaktujemy się z Państwem celem omówienia szczegółów!'
+            'Twoja wiadomość została wysłana.'
         );
     }
 

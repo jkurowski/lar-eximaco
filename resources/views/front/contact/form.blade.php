@@ -19,7 +19,7 @@
                             {{ session('warning') }}
                         </div>
                     @endif
-                    <form method="post" action="" class="contact-form validateForm">
+                    <form method="post" action="{{ route('front.contact.form') }}" class="contact-form validateForm">
                         {{ csrf_field() }}
                         <div class="box-anim mb-3">
                             <label for="name" class="lab-anim">Imię i Nazwisko / Nazwa firmy</label>
@@ -62,6 +62,7 @@
                             </div>
                         @endforeach
                         <div class="text-center text-sm-end">
+                            <input type="hidden" name="page_name" value="{{ $page_name }}">
                             <script type="text/javascript">
                                 document.write("<button type=\"submit\" class=\"project-btn project-btn--gray\"><span>Wyślij</span></button>");
                             </script>

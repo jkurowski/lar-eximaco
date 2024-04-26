@@ -37,7 +37,7 @@ class ChatSend extends Mailable
      */
     public function build()
     {
-        return $this->subject('DeveloPro - masz nową wiadomość')->view('admin.crm.client.chat.mail-template',
+        return $this->subject('DeveloPro - masz nową wiadomość: '.$this->request['page_name'])->view('front.mail.form',
             [
                 'request' => $this->request,
                 'client' => $this->client,

@@ -156,7 +156,7 @@
         </section>
 
         <section id="formularz-kontaktowy" class="cta cta-form sec-pad">
-            @include('front.contact.form', ['page_name' => 'Kontakt'])
+            @include('front.contact.form', ['page_name' => $investment->name .' - '. $property->name])
         </section>
 
     </main>

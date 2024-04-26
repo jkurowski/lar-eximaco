@@ -30,11 +30,6 @@
                         <p><b>Temat:</b> {{ $request->form_subject }}</p>
                         <hr style="border:0;border-bottom:1px solid #ececec" />
                         <p>{{ $request->form_message }}</p>
-                        <hr style="border:0;border-bottom:1px solid #ececec" />
-                        <p><b>Zgody:</b></p>
-                        @foreach($rodo_rules as $rules)
-                            <p style="padding: 5px 0;line-height:normal;font-size:13px">{!! $rules !!}</p>
-                        @endforeach
                     </td>
                 </tr>
             </table>
