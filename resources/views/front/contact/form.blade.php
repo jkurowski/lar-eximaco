@@ -19,7 +19,7 @@
                             {{ session('warning') }}
                         </div>
                     @endif
-                    <form method="post" action="{{ route('front.contact.form') }}" class="contact-form validateForm">
+                    <form method="post" action="{{ route('front.contact.form') }}" class="contact-form validateForm" id="contact-form">
                         {{ csrf_field() }}
                         <div class="box-anim mb-3">
                             <label for="name" class="lab-anim">Imię i Nazwisko / Nazwa firmy</label>
@@ -64,7 +64,7 @@
                         <div class="text-center text-sm-end">
                             <input type="hidden" name="page_name" value="{{ $page_name }}">
                             <script type="text/javascript">
-                                document.write("<button type=\"submit\" class=\"project-btn project-btn--gray\"><span>Wyślij</span></button>");
+                                document.write("<button type=\"submit\" class=\"g-recaptcha project-btn project-btn--gray\" data-sitekey=\"{{ config('services.recaptcha_v3.siteKey') }}\" data-callback=\"onRecaptchaSuccess\" data-action=\"submitContact\">Wyślij</button>");
                             </script>
                             <noscript>Do poprawnego działania, Java musi być włączona.</noscript>
                         </div>
@@ -77,14 +77,27 @@
 @push('scripts')
     <script src="{{ asset('js/validation.js') }}" charset="utf-8"></script>
     <script src="{{ asset('js/pl.js') }}" charset="utf-8"></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+
     <script type="text/javascript">
         $(document).ready(function(){
             $(".validateForm").validationEngine({
                 validateNonVisibleFields: true,
                 updatePromptsPosition:true,
-                promptPosition : "topRight:-137px"
+                promptPosition : "topRight:-137px",
+                autoPositionUpdate: false
             });
         });
+
+        function onRecaptchaSuccess(token) {
+            $(".validateForm").validationEngine('updatePromptsPosition');
+            const isValid = $(".validateForm").validationEngine('validate');
+            if (isValid) {
+                $("#contact-form").submit();
+            } else {
+                grecaptcha.reset();
+            }
+        }
         @if (session('success') || session('warning') || $errors->any())
         $(window).load(function() {
             const aboveHeight = $('header').outerHeight();

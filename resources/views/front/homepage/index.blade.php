@@ -246,7 +246,7 @@
                             <h2 class="section-header__title" data-aos="fade-up" data-aos-duration="700" data-aos-delay="300" data-modaltytul="9">{!! getInline($array, 9, 'modaltytul') !!}</h2>
                         </div>
                         <div class="mb-5" data-aos="fade-up" data-aos-duration="700" data-aos-delay="300" data-modaleditortext="9">{!! getInline($array, 9, 'modaleditortext') !!}</div>
-                        <a href="" class="project-btn project-btn--gray" data-aos="fade-up" data-aos-duration="700" data-aos-delay="300">Sprawdź</a>
+                        <a href="{{ route('front.investor') }}" class="project-btn project-btn--gray" data-aos="fade-up" data-aos-duration="700" data-aos-delay="300">Sprawdź</a>
                     </div>
                     <div class="col-lg-6 offset-lg-1">
                         <div id="map"></div>
