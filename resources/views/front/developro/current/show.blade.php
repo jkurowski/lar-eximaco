@@ -67,21 +67,21 @@
                 </div>
                 <div class="container-slider-left sec-pad">
                     <div class="position-relative">
-                        <img src="img/ow-tlo.jpg" alt="zdjęcie inwestycji" class="advantages__img-bg" width="550" height="600" loading="lazy">
+                        <img src="{{ asset('img/ow-tlo.jpg') }}" alt="zdjęcie inwestycji" class="advantages__img-bg" width="550" height="600" loading="lazy">
                         <div class="slider advantages-slider">
                             <div>
                                 <div class="advantages-slider__photo">
-                                    <img class="" src="img/atuty2.jpg" alt="zdjęcie inwestycji" width="532" height="432" loading="lazy">
+                                    <img class="" src="{{ asset('img/atuty1.jpg') }}" alt="zdjęcie inwestycji" width="532" height="432" loading="lazy">
                                 </div>
                             </div>
                             <div>
                                 <div class="advantages-slider__photo">
-                                    <img class="" src="img/atuty2.jpg" alt="zdjęcie inwestycji" width="532" height="432" loading="lazy">
+                                    <img class="" src="{{ asset('img/atuty2.jpg') }}" alt="zdjęcie inwestycji" width="532" height="432" loading="lazy">
                                 </div>
                             </div>
                             <div>
                                 <div class="advantages-slider__photo">
-                                    <img class="" src="img/atuty1.jpg" alt="zdjęcie inwestycji" width="532" height="432" loading="lazy">
+                                    <img class="" src="{{ asset('img/atuty1.jpg') }}" alt="zdjęcie inwestycji" width="532" height="432" loading="lazy">
                                 </div>
                             </div>
                         </div>
