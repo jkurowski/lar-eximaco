@@ -71,17 +71,17 @@
                         <div class="slider advantages-slider">
                             <div>
                                 <div class="advantages-slider__photo">
-                                    <img class="" src="{{ asset('img/atuty1.jpg') }}" alt="zdjęcie inwestycji" width="532" height="432" loading="lazy">
+                                    <img class="" src="{{ asset('images/atuty3.jpg') }}" alt="zdjęcie inwestycji" width="532" height="432" loading="lazy">
                                 </div>
                             </div>
                             <div>
                                 <div class="advantages-slider__photo">
-                                    <img class="" src="{{ asset('img/atuty2.jpg') }}" alt="zdjęcie inwestycji" width="532" height="432" loading="lazy">
+                                    <img class="" src="{{ asset('images/atuty4.jpg') }}" alt="zdjęcie inwestycji" width="532" height="432" loading="lazy">
                                 </div>
                             </div>
                             <div>
                                 <div class="advantages-slider__photo">
-                                    <img class="" src="{{ asset('img/atuty1.jpg') }}" alt="zdjęcie inwestycji" width="532" height="432" loading="lazy">
+                                    <img class="" src="{{ asset('images/atuty5.jpg') }}" alt="zdjęcie inwestycji" width="532" height="432" loading="lazy">
                                 </div>
                             </div>
                         </div>
