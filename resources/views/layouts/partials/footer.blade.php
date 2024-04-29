@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-xl-4">
                     <img src="{{ asset('images/logo.svg') }}" alt="logo" class="mb-5" loading="lazy">
-                    <p>To co nas wyróżnia to podejście do klienta. Każdy jest dla nas indywidualną osobowością, która posiada własne potrzeby i możliwości.</p>
+                    <p>Treści znajdujące się na stronie internetowej nie stanowią oferty w rozumieniu przepisów prawa i winny być interpretowane wyłącznie jak informacje, o których jest mowa w art. 71 Kodeksu Cywilnego.</p>
                     <div class="footer__contact social-media">
                         <a href="" class="d-none">
                             <svg xmlns="http://www.w3.org/2000/svg" width="39" height="39" viewBox="0 0 39 39" class="project-icon">

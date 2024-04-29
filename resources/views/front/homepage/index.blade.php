@@ -143,7 +143,7 @@
                                                 <img src="{{ asset('images/miejsce.svg') }}" alt="ikonka" class="advantages__box-img" width="53" height="53" loading="lazy">
                                             </div>
                                             <div class="col-9 col-sm-8">
-                                                <p class="mb-0">Wysoki standard wykonania</p>
+                                                <p class="mb-0">Doskonała lokalizacja</p>
                                             </div>
                                         </div>
                                     </div>
@@ -155,7 +155,7 @@
                                                 <img src="{{ asset('images/szkic.svg') }}" alt="ikonka" class="advantages__box-img" width="53" height="53" loading="lazy">
                                             </div>
                                             <div class="col-9 col-sm-8">
-                                                <p class="mb-0">Wysoki standard wykonania</p>
+                                                <p class="mb-0">Przemyślana przestrzeń</p>
                                             </div>
                                         </div>
                                     </div>
@@ -167,7 +167,7 @@
                                                 <img src="{{ asset('images/garaz.svg') }}" alt="ikonka" class="advantages__box-img" width="53" height="53" loading="lazy">
                                             </div>
                                             <div class="col-9 col-sm-8">
-                                                <p class="mb-0">Wysoki standard wykonania</p>
+                                                <p class="mb-0">Parking dla każdego</p>
                                             </div>
                                         </div>
                                     </div>
