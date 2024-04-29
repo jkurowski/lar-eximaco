@@ -4,10 +4,9 @@
             <div class="row">
                 <div class="col-xl-4">
                     <img src="{{ asset('images/logo.svg') }}" alt="logo" class="mb-5" loading="lazy">
-                    <p><strong>Lorem ipsum dolor sit amet, consetetur.</strong></p>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.</p>
+                    <p>To co nas wyróżnia to podejście do klienta. Każdy jest dla nas indywidualną osobowością, która posiada własne potrzeby i możliwości.</p>
                     <div class="footer__contact social-media">
-                        <a href="">
+                        <a href="" class="d-none">
                             <svg xmlns="http://www.w3.org/2000/svg" width="39" height="39" viewBox="0 0 39 39" class="project-icon">
                                 <g transform="translate(-273 -4848)">
                                     <g transform="translate(273 4848)" fill="none" stroke="#fff" stroke-width="1">
@@ -18,7 +17,7 @@
                                 </g>
                             </svg>
                         </a>
-                        <a href="">
+                        <a href="" class="d-none">
                             <svg xmlns="http://www.w3.org/2000/svg" width="39" height="39" viewBox="0 0 39 39" class="project-icon">
                                 <g transform="translate(-332 -4848)">
                                     <g transform="translate(332 4848)" fill="none" stroke="#fff" stroke-width="1">
