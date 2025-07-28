@@ -31,6 +31,8 @@ class Property extends Model
         'rooms',
         'area',
         'price',
+        'price_brutto',
+        'vat',
         'additional',
         'garden_area',
         'balcony_area',
@@ -52,7 +54,17 @@ class Property extends Model
         'meta_title',
         'meta_description',
         'views',
-        'active'
+        'active',
+        'highlighted',
+        'promotion_end_date',
+        'promotion_price',
+        'promotion_price_show',
+        'client_id',
+        'saled_at',
+        'reservation_until',
+        'visitor_related_type',
+        'text',
+        'history_info'
     ];
 
     /**
@@ -120,6 +132,13 @@ class Property extends Model
     public function investment()
     {
         return $this->belongsTo(Investment::class);
+    }
+
+    public function priceComponents()
+    {
+        return $this->belongsToMany(PropertyPriceComponent::class, 'property_price_component_property')
+            ->withPivot('value', 'value_m2', 'category')
+            ->withTimestamps();
     }
 
     // Define an accessor for the URL

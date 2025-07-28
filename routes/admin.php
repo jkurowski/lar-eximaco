@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Route;
 Route::group([
     'namespace' => 'Admin', 'prefix' => '/admin', 'as' => 'admin.', 'middleware' => ['auth', 'verified']], function () {
 
+    Route::get('/', function () {
+        return redirect('admin/settings/seo');
+    });
+
     Route::post('slider/set', 'Slider\IndexController@sort')->name('slider.sort');
     Route::post('gallery/set', 'Gallery\IndexController@sort')->name('gallery.sort');
     Route::post('image/set', 'Gallery\ImageController@sort')->name('image.sort');
@@ -107,7 +111,10 @@ Route::group([
     Route::group(['namespace' => 'Developro', 'prefix' => '/developro', 'as' => 'developro.'], function () {
 
         Route::resources([
-            'investment' => 'Investment\IndexController'
+            'investment' => 'Investment\IndexController',
+            'property-price-components' => 'PropertyPrice\IndexController',
+            'investment-company' => 'Company\IndexController',
+            'investment-sale-point' => 'Investment\SalePointController',
         ]);
 
         Route::group(['prefix' => '/investment', 'as' => 'investment.'], function () {
@@ -123,7 +130,9 @@ Route::group([
                 '{investment}/buildings' => 'Building\BuildingController',
                 '{investment}/building.floors' => 'Building\BuildingFloorController',
                 '{investment}/building.floor.properties' => 'Building\BuildingPropertyController',
-                '{investment}/property/{property}/message' => 'Property\InboxController'
+                '{investment}/property/{property}/message' => 'Property\InboxController',
+                '{investment}/floor/{floor}/others' => 'Property\OthersController',
+                '{investment}/building.floor.others' => 'Building\BuildingOthersController',
             ]);
 
             Route::get('{investment}/log', 'Investment\IndexController@log')->name('log');

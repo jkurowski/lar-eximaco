@@ -63,9 +63,7 @@
                                             </div>
                                             <div class="col-6 mb-4">
                                                 @include('form-elements.html-select', ['label' => 'Typ powierzchni', 'name' => 'type', 'selected' => $entry->type, 'select' => [
-                                                    '1' => 'Mieszkanie / Apartament',
-                                                    '2' => 'Komórka lokatorska',
-                                                    '3' => 'Miejsce parkingowe'
+                                                    '1' => 'Mieszkanie / Apartament'
                                                     ]
                                                 ])
                                             </div>
@@ -146,6 +144,9 @@
                                 </div>
                                 <div class="row w-100 form-group">
 
+                                </div>
+                                <div class="row w-100 form-group">
+                                    @include('form-elements.input-text', ['label' => 'Cena', 'sublabel'=> 'Tylko liczby', 'name' => 'price', 'value' => $entry->price])
                                 </div>
                                 <div class="row w-100 form-group">
                                     @include('form-elements.input-text', ['label' => 'Cena', 'sublabel'=> 'Tylko liczby', 'name' => 'price', 'value' => $entry->price])
