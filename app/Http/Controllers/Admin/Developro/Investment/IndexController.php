@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin\Developro\Investment;
 
+use App\Helpers\InvestmentHelpers;
+use App\Helpers\ProvinceTypes;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\InvestmentFormRequest;
 use App\Models\City;
@@ -49,7 +51,10 @@ class IndexController extends Controller
         return view('admin.developro.investment.form', [
             'galleryList' => Gallery::pluck('name', 'id')->prepend('Brak', 0),
             'cardTitle' => 'Dodaj inwestycje',
-            'backButton' => route('admin.developro.investment.index')
+            'backButton' => route('admin.developro.investment.index'),
+            'companies' => InvestmentHelpers::getCompanies(),
+            'salePoints' => InvestmentHelpers::getSalePoints(),
+            'provinces' => ProvinceTypes::getProvinces()
         ])->with('entry', Investment::make());
     }
 
@@ -78,7 +83,10 @@ class IndexController extends Controller
             'entry' => $this->repository->find($id),
             'galleryList' => Gallery::pluck('name', 'id')->prepend('Brak', 0),
             'cardTitle' => 'Edytuj inwestycję',
-            'backButton' => route('admin.developro.investment.index')
+            'backButton' => route('admin.developro.investment.index'),
+            'companies' => InvestmentHelpers::getCompanies(),
+            'salePoints' => InvestmentHelpers::getSalePoints(),
+            'provinces' => ProvinceTypes::getProvinces()
         ]);
     }
 

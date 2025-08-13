@@ -49,7 +49,17 @@ class Investment extends Model
         'lat',
         'lng',
         'zoom',
-        'marker'
+        'marker',
+        'file_brochure',
+        'inv_province',
+        'inv_county',
+        'inv_municipality',
+        'inv_city',
+        'inv_street',
+        'inv_property_number',
+        'inv_postal_code',
+        'company_id',
+        'sale_point_id',
     ];
 
     public function investmentPage()
