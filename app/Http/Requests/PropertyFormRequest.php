@@ -114,12 +114,11 @@ class PropertyFormRequest extends FormRequest
             'text' => '',
             'history_info' => '',
 
-
             'price-component-type'     => 'array',
             'price-component-type.*'   => 'required|exists:property_price_components,id',
 
             'price-component-category'   => 'array',
-            'price-component-category.*' => 'required|in:1,2',
+            'price-component-category.*' => 'required|in:1,2,3',
 
             'price-component-value'     => 'array',
             'price-component-value.*'   => 'nullable|numeric|min:0',
