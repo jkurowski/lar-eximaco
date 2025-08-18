@@ -32,6 +32,8 @@ class InvestmentHouseController extends Controller
             ->limit(4)
             ->get();
 
+        $property = $property->load('priceComponents');
+
         return view('front.investment_house.index', [
             'investment' => $investment,
             'property' => $property,

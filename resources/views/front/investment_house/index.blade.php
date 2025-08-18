@@ -26,13 +26,13 @@
                     <div class="row">
                         <div class="col-6 d-flex align-items-center">
                             @if($prev_house)
-                            <a href="{{route('front.developro.house.index', [$investment->slug, $prev_house->id])}}"><img src="{{ asset('images/arrow-left.svg') }}" alt="strzałka w lewo" width="28" height="28" loading="eager"><span class="ms-3">{{$prev_house->name}}</span></a>
+                                <a href="{{route('front.developro.house.index', [$investment->slug, $prev_house->id])}}"><img src="{{ asset('images/arrow-left.svg') }}" alt="strzałka w lewo" width="28" height="28" loading="eager"><span class="ms-3">{{$prev_house->name}}</span></a>
                             @endif
                         </div>
 
                         <div class="col-6 d-flex align-items-center justify-content-end">
                             @if($next_house)
-                            <a href="{{route('front.developro.house.index', [$investment->slug, $next_house->id])}}"><span class="me-3">{{$next_house->name}}</span><img src="{{ asset('images/arrow-right.svg') }}" alt="strzałka w prawo" width="28" height="28" loading="eager"></a>
+                                <a href="{{route('front.developro.house.index', [$investment->slug, $next_house->id])}}"><span class="me-3">{{$next_house->name}}</span><img src="{{ asset('images/arrow-right.svg') }}" alt="strzałka w prawo" width="28" height="28" loading="eager"></a>
                             @endif
                         </div>
                     </div>
@@ -43,7 +43,59 @@
                     <div class="col-lg-5">
                         <div class="section-header">
                             <p class="section-header__subtitle">{{ $investment->city }} - {{ $investment->name }}</p>
-                            <h1 class="section-header__title">{{ $property->name }}</h1>
+                            <h1 class="section-header__title mb-2">{{ $property->name }}</h1>
+                            <?php if ($property->status == 3) : ?>
+                            <p class="text-danger text-uppercase fw-bold fs-5">Sprzedane</p>
+                            <?php elseif ($property->status == 1) : ?>
+                            <p class="text-success text-uppercase fw-bold fs-5">Dostępne</p>
+                            <?php else : ?>
+                            <p class="text-warning text-uppercase fw-bold fs-5">Rezerwacja</p>
+                            <?php endif; ?>
+                            <div class="row mb-3">
+                                @if($property->price_brutto && $property->status == 1)
+                                    <div class="col-12 col-sm-6 @if($property->highlighted) promotion-price order-2 text-center text-sm-end @endif">
+                                        <span class="fs-2 d-block"><strong>@money($property->price_brutto)</strong></span>
+                                        <span class="d-block">@money(($property->price_brutto / $property->area)) / m<sup>2</sup></span>
+                                    </div>
+                                @endif
+                                @if($property->promotion_price && $property->price_brutto && $property->highlighted)
+                                <div class="col-12 col-sm-6 @if($property->highlighted) order-1 @endif">
+                                    <span class="fs-2 d-block"><strong>@money($property->promotion_price)</strong></span>
+                                    <span class="d-block">@money(($property->promotion_price / $property->area)) / m<sup>2</sup></span>
+                                </div>
+                                @endif
+                            </div>
+                            @auth
+                                @if($property->has_price_history)
+                                    <a href="#formularz-kontaktowy" data-id="{{ $property->id }}" class="project-btn project-btn--gray btn-history mb-3">Pokaż historię ceny</a>
+                                    <div id="modalHistory"></div>
+                                @endif
+                                @if($property->priceComponents)
+                                <div class="row">
+                                    <div class="col-12">
+                                        <ul class="price-component mb-5 list-unstyled">
+                                            @foreach($property->priceComponents as $priceComponent)
+                                                <li>
+                                                    {{ $priceComponent->name }}
+                                                    <span class="ms-auto text-end">
+                                                    @if($priceComponent->pivot->value)
+                                                        <span class="d-block"><b>@money($priceComponent->pivot->value)</b></span>
+                                                    @endif
+                                                    <?php if ($priceComponent->pivot->category == 1) : ?>
+                                                        <span class="small">Obowiązkowy</span>
+                                                    <?php elseif ($priceComponent->pivot->category == 2) : ?>
+                                                        <span class="small">Opcjonalny</span>
+                                                    <?php else : ?>
+                                                        <span class="small">Zmienny</span>
+                                                    <?php endif; ?>
+                                                    </span>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                </div>
+                                @endif
+                            @endauth
                         </div>
                         <div class="desc-anim">
                             <div class="inner-html">
@@ -103,51 +155,51 @@
                     <div class="col-12">
                         <div class="similar-offers-slider">
                             @foreach($similar as $s)
-                            <div>
-                                <div class="offer-list-box status-sprzedany position-relative">
-                                    <div class="row align-items-center">
-                                        <div class="col-lg-4 offer-list-box__img">
-                                            @if($s->file)
-                                                <a href="{{route('front.developro.house.index', ['slug' => $investment->slug, 'property' => $s])}}">
-                                                    <picture>
-                                                        <source type="image/webp" srcset="/investment/property/list/webp/{{$s->file_webp}}">
-                                                        <source type="image/jpeg" srcset="/investment/property/list/{{$s->file}}">
-                                                        <img src="/investment/property/list/{{$s->file}}" alt="Plan {{$s->name}}" loading="lazy">
-                                                    </picture>
-                                                </a>
-                                            @endif
-                                        </div>
-                                        <div class="col-lg-8">
-                                            <div class="row">
-                                                <div class="col-lg-4 offer-list-box__name">
-                                                    <p class="mb-2">{{ $s->name_list }}</p>
-                                                    <p class="offer-list-box__name--big mb-0">{{ $s->number }}</p>
+                                <div>
+                                    <div class="offer-list-box status-sprzedany position-relative">
+                                        <div class="row align-items-center">
+                                            <div class="col-lg-4 offer-list-box__img">
+                                                @if($s->file)
+                                                    <a href="{{route('front.developro.house.index', ['slug' => $investment->slug, 'property' => $s])}}">
+                                                        <picture>
+                                                            <source type="image/webp" srcset="/investment/property/list/webp/{{$s->file_webp}}">
+                                                            <source type="image/jpeg" srcset="/investment/property/list/{{$s->file}}">
+                                                            <img src="/investment/property/list/{{$s->file}}" alt="Plan {{$s->name}}" loading="lazy">
+                                                        </picture>
+                                                    </a>
+                                                @endif
+                                            </div>
+                                            <div class="col-lg-8">
+                                                <div class="row">
+                                                    <div class="col-lg-4 offer-list-box__name">
+                                                        <p class="mb-2">{{ $s->name_list }}</p>
+                                                        <p class="offer-list-box__name--big mb-0">{{ $s->number }}</p>
+                                                    </div>
+                                                    <div class="col-6 col-lg-4 offer-list-box__rooms text-center">
+                                                        <p class="">Pokoje</p>
+                                                        <p class="mb-0">{{ $s->rooms }}</p>
+                                                    </div>
+                                                    <div class="col-6 col-lg-4 offer-list-box__area text-center">
+                                                        <p class="">Powierzchnia</p>
+                                                        <p class="mb-0">{{ $s->area }} m<sup>2</sup></p>
+                                                    </div>
                                                 </div>
-                                                <div class="col-6 col-lg-4 offer-list-box__rooms text-center">
-                                                    <p class="">Pokoje</p>
-                                                    <p class="mb-0">{{ $s->rooms }}</p>
-                                                </div>
-                                                <div class="col-6 col-lg-4 offer-list-box__area text-center">
-                                                    <p class="">Powierzchnia</p>
-                                                    <p class="mb-0">{{ $s->area }} m<sup>2</sup></p>
+                                                <div class="row mt-4 align-items-center">
+                                                    <div class="col-6 col-lg-5 text-center offer-list-box__pdf d-flex align-items-center justify-content-center justify-content-lg-start">
+                                                        <img src="{{ asset('images/pdf.svg') }}" alt="Ikonka pliku .pdf" class="me-3"  width="21" height="24" loading="lazy">
+                                                        <a href="{{ asset('investment/property/pdf/'.$s->file_pdf) }}" target="_blank">Pobierz pdf</a>
+                                                    </div>
+                                                    <div class="col-6 col-lg-7 text-center">
+                                                        <a href="{{route('front.developro.house.index', ['slug' => $investment->slug, 'property' => $s])}}" class="project-btn project-btn--gray"><span>Sprawdź</span></a>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="row mt-4 align-items-center">
-                                                <div class="col-6 col-lg-5 text-center offer-list-box__pdf d-flex align-items-center justify-content-center justify-content-lg-start">
-                                                    <img src="{{ asset('images/pdf.svg') }}" alt="Ikonka pliku .pdf" class="me-3"  width="21" height="24" loading="lazy">
-                                                    <a href="{{ asset('investment/property/pdf/'.$s->file_pdf) }}" target="_blank">Pobierz pdf</a>
-                                                </div>
-                                                <div class="col-6 col-lg-7 text-center">
-                                                    <a href="{{route('front.developro.house.index', ['slug' => $investment->slug, 'property' => $s])}}" class="project-btn project-btn--gray"><span>Sprawdź</span></a>
-                                                </div>
-                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="offer-list-box__status-container">
-                                        {!! roomStatusBadge($s->status) !!}
+                                        <div class="offer-list-box__status-container">
+                                            {!! roomStatusBadge($s->status) !!}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                             @endforeach
                         </div>
                     </div>

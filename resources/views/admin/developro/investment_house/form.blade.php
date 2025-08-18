@@ -75,13 +75,20 @@
                             ])
 
                             @include('form-elements.html-input-text', ['label' => 'Powierzchnia', 'name' => 'area', 'value' => $entry->area, 'required' => 1])
-                            @include('form-elements.input-text', ['label' => 'Cena brutto', 'sublabel'=> 'Tylko liczby', 'name' => 'price', 'value' => $entry->price])
+                            @include('form-elements.input-text', ['label' => 'Cena brutto', 'sublabel'=> 'Tylko liczby', 'name' => 'price_brutto', 'value' => $entry->price_brutto])
                             @include('form-elements.html-select', ['label' => 'Stawka VAT', 'name' => 'vat', 'selected' => $entry->vat, 'select' => [
                                 '8' => '8%',
                                 '23' => '23%',
                                 '0' => '0%',
                                 ]
                             ])
+                            @include('form-elements.html-select', ['label' => 'Promocja', 'name' => 'highlighted', 'selected' => $entry->highlighted, 'select' => [
+                                '0' => 'Nie',
+                                '1' => 'Tak'
+                                ]
+                            ])
+                            @include('form-elements.input-text', ['label' => 'Cena promocyjna', 'sublabel'=> 'Tylko liczby', 'name' => 'promotion_price', 'value' => $entry->promotion_price])
+
                             <button id="add-price-component"
                                     class="btn btn-primary mt-2"
                                     type="button"
