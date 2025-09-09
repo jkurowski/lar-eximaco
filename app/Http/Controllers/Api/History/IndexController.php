@@ -482,7 +482,7 @@ class IndexController extends Controller
 //                    ? round((float)$property->price_brutto / (float)$property->area, 2)
 //                    : 'X',
 
-                'isset: ' . (isset($property->area, $property->price) ? 'ok' : 'fail')
+                'isset: ' . (isset($property->area, $property->price_brutto) ? 'ok' : 'fail')
                 . ' | is_numeric: ' . (is_numeric($property->area) ? 'ok' : 'fail')
                 . ' | area > 0: ' . ($property->area > 0 ? 'ok' : 'fail')
                 . ' | type==1: ' . ($property->type == 1 ? 'ok' : 'fail')
