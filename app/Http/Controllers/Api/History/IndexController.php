@@ -29,7 +29,7 @@ class IndexController extends Controller
         $extIdent = bin2hex(random_bytes(18));
         $dataset->appendChild($doc->createElement("extIdent", $extIdent));
 
-        $company = "WGW DEVELOPMENT GROUP sp. z o.o.";
+        $company = "Eximaco Paweł Matulaniec Spółka Jawna";
         $year = 2025;
 
         // title
