@@ -150,6 +150,10 @@ class Property extends Model
     }
 
     // API
+    public function relatedProperties()
+    {
+        return $this->belongsToMany(Property::class, 'property_property', 'property_id', 'related_property_id');
+    }
 
     public function getRelatedTypesAttribute()
     {
