@@ -476,17 +476,17 @@ class IndexController extends Controller
                     : 'X',
 
                 //Cena m2 powierzchni użytkowej lokalu mieszkalnego / domu jednorodzinnego [zł]
-//                (isset($property->area, $property->price_brutto)
-//                    && is_numeric($property->area) && $property->area > 0
-//                    && $property->type == 1)
-//                    ? round((float)$property->price_brutto / (float)$property->area, 2)
-//                    : 'X',
+                (isset($property->area, $property->price_brutto)
+                    && is_numeric($property->area) && $property->area > 0
+                    && $property->type == 1)
+                    ? round((float)$property->price_brutto / (float)$property->area, 2)
+                    : 'X',
 
-                'isset: ' . (isset($property->area, $property->price_brutto) ? 'ok' : 'fail')
-                . ' | is_numeric: ' . (is_numeric($property->area) ? 'ok' : 'fail')
-                . ' | area > 0: ' . ($property->area > 0 ? 'ok' : 'fail')
-                . ' | type==1: ' . ($property->type == 1 ? 'ok' : 'fail')
-                . PHP_EOL,
+//                'isset: ' . (isset($property->area, $property->price_brutto) ? 'ok' : 'fail')
+//                . ' | is_numeric: ' . (is_numeric($property->area) ? 'ok' : 'fail')
+//                . ' | area > 0: ' . ($property->area > 0 ? 'ok' : 'fail')
+//                . ' | type==1: ' . ($property->type == 1 ? 'ok' : 'fail')
+//                . PHP_EOL,
 
                 //Data od której cena obowiązuje cena m2 powierzchni użytkowej lokalu mieszkalnego / domu jednorodzinnego
                 'X',
