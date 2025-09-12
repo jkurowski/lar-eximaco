@@ -66,10 +66,10 @@
                                 @endif
                             </div>
                             @auth
-                                @if($property->has_price_history)
+{{--                                @if($property->has_price_history)--}}
                                     <a href="#formularz-kontaktowy" data-id="{{ $property->id }}" class="project-btn project-btn--gray btn-history mb-3">Pokaż historię ceny</a>
                                     <div id="modalHistory"></div>
-                                @endif
+{{--                                @endif--}}
                                 @if($property->priceComponents)
                                 <div class="row">
                                     <div class="col-12">
@@ -119,6 +119,14 @@
                                     <td>Wystawa okienna: </td>
                                     <td class="text-end">północny-wschód <br>południowy-zachód</td>
                                 </tr>
+                                @if($investment->file_brochure)
+                                <tr>
+                                    <td>Prospekt informacyjny: </td>
+                                    <td class="text-end">
+                                        <a href="{{ asset('investment/brochure/'.$property->file_pdf) }}" target="_blank">Pobierz</a>
+                                    </td>
+                                </tr>
+                                @endif
                                 </tbody>
                             </table>
                             <div class="offer-list-box__pdf d-inline-block mb-5 mb-xl-0 me-3 me-sm-5">
