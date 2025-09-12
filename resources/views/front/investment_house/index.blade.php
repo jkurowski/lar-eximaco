@@ -123,7 +123,7 @@
                                 <tr>
                                     <td>Prospekt informacyjny: </td>
                                     <td class="text-end">
-                                        <a href="{{ asset('investment/brochure/'.$property->file_pdf) }}" target="_blank">Pobierz</a>
+                                        <a href="{{ asset('investment/brochure/'.$investment->file_brochure) }}" target="_blank">Pobierz</a>
                                     </td>
                                 </tr>
                                 @endif
