@@ -56,17 +56,46 @@ class Property extends Model
         'meta_description',
         'views',
         'active',
-        'highlighted',
         'promotion_end_date',
-        'promotion_price',
         'promotion_price_show',
         'client_id',
         'saled_at',
         'reservation_until',
         'visitor_related_type',
         'text',
-        'history_info'
+        'history_info',
+
+        // Historia ceny
+        'highlighted',
+        'promotion_price',
     ];
+
+    // Historia ceny
+    public function priceHistory(): HasMany
+    {
+        return $this->hasMany(PropertyPrice::class)->orderBy('changed_at', 'desc');
+    }
+    public function getHasPriceHistoryAttribute(): bool
+    {
+        return $this->priceHistory()->exists();
+    }
+
+    public function getCurrentPriceDateAttribute()
+    {
+        // Jeśli typ nieruchomości nie jest 1 → X
+        if ($this->type != 1) {
+            return 'X';
+        }
+
+        // Pobranie najnowszej ceny (bez wywoływania relacji jako metody)
+        $latestPrice = $this->priceHistory()->first();
+
+        if (!$latestPrice || !$latestPrice->changed_at) {
+            return 'X';
+        }
+
+        return $latestPrice->changed_at->toDateString();
+    }
 
     /**
      * Get next property

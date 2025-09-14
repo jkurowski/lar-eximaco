@@ -59,29 +59,30 @@
                                     </div>
                                 @endif
                                 @if($property->promotion_price && $property->price_brutto && $property->highlighted)
-                                <div class="col-12 col-sm-6 @if($property->highlighted) order-1 @endif">
-                                    <span class="fs-2 d-block"><strong>@money($property->promotion_price)</strong></span>
-                                    <span class="d-block">@money(($property->promotion_price / $property->area)) / m<sup>2</sup></span>
-                                </div>
+                                    <div class="col-12 col-sm-6 @if($property->highlighted) order-1 @endif">
+                                        <span class="fs-2 d-block"><strong>@money($property->promotion_price)</strong></span>
+                                        <span class="d-block">@money(($property->promotion_price / $property->area)) / m<sup>2</sup></span>
+                                    </div>
                                 @endif
                             </div>
+                            @if($property->has_price_history)
+                                <a class="project-btn project-btn--gray btn-history mb-3" data-id="{{ $property->id }}" href="#">Historia zmian ceny</a>
+                            @else
+                                <p>Cena nie zmieniła się od 11.09.2025 r.</p>
+                            @endif
                             @auth
-{{--                                @if($property->has_price_history)--}}
-                                    <a href="#formularz-kontaktowy" data-id="{{ $property->id }}" class="project-btn project-btn--gray btn-history mb-3">Pokaż historię ceny</a>
-                                    <div id="modalHistory"></div>
-{{--                                @endif--}}
                                 @if($property->priceComponents)
-                                <div class="row">
-                                    <div class="col-12">
-                                        <ul class="price-component mb-5 list-unstyled">
-                                            @foreach($property->priceComponents as $priceComponent)
-                                                <li>
-                                                    {{ $priceComponent->name }}
-                                                    <span class="ms-auto text-end">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <ul class="price-component mb-5 list-unstyled">
+                                                @foreach($property->priceComponents as $priceComponent)
+                                                    <li>
+                                                        {{ $priceComponent->name }}
+                                                        <span class="ms-auto text-end">
                                                     @if($priceComponent->pivot->value)
-                                                        <span class="d-block"><b>@money($priceComponent->pivot->value)</b></span>
-                                                    @endif
-                                                    <?php if ($priceComponent->pivot->category == 1) : ?>
+                                                                <span class="d-block"><b>@money($priceComponent->pivot->value)</b></span>
+                                                            @endif
+                                                                <?php if ($priceComponent->pivot->category == 1) : ?>
                                                         <span class="small">Obowiązkowy</span>
                                                     <?php elseif ($priceComponent->pivot->category == 2) : ?>
                                                         <span class="small">Opcjonalny</span>
@@ -89,11 +90,11 @@
                                                         <span class="small">Zmienny</span>
                                                     <?php endif; ?>
                                                     </span>
-                                                </li>
-                                            @endforeach
-                                        </ul>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
                                     </div>
-                                </div>
                                 @endif
                             @endauth
                         </div>
@@ -120,12 +121,12 @@
                                     <td class="text-end">północny-wschód <br>południowy-zachód</td>
                                 </tr>
                                 @if($investment->file_brochure)
-                                <tr>
-                                    <td>Prospekt informacyjny: </td>
-                                    <td class="text-end">
-                                        <a href="{{ asset('investment/brochure/'.$investment->file_brochure) }}" target="_blank">Pobierz</a>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td>Prospekt informacyjny: </td>
+                                        <td class="text-end">
+                                            <a href="{{ asset('investment/brochure/'.$investment->file_brochure) }}" target="_blank">Pobierz</a>
+                                        </td>
+                                    </tr>
                                 @endif
                                 </tbody>
                             </table>
@@ -220,4 +221,61 @@
         </section>
 
     </main>
+    @if($property->has_price_history)
+    <div id="modalHistory"></div>
+    @endif
 @endsection
+@push('scripts')
+    <link href="{{ asset('/css/history.min.css') }}" rel="stylesheet">
+    <script type="text/javascript">
+        document.addEventListener('click', async function (e) {
+            // History Button
+            const btnHistory = e.target.closest('.btn-history');
+            if (btnHistory) {
+                e.preventDefault();
+
+                // Disable button to prevent double click
+                btnHistory.disabled = true;
+
+                const modalHolder = document.getElementById('modalHistory');
+                const dataId = btnHistory.dataset.id;
+                modalHolder.innerHTML = '';
+
+                try {
+                    const url = `/historia/${dataId}/`;
+
+                    const response = await fetch(url, {
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest',
+                        }
+                    });
+
+                    if (!response.ok) {
+                        const errorText = await response.text();
+                        console.error('Błąd z backendu:', response.status, errorText);
+                        throw new Error(`Błąd sieci: ${response.status}`);
+                    }
+
+                    const html = await response.text();
+                    modalHolder.innerHTML = html;
+
+                    const modalElement = document.getElementById('portletModal');
+                    const bootstrapModal = new bootstrap.Modal(modalElement);
+                    bootstrapModal.show();
+
+                    modalElement.addEventListener('hidden.bs.modal', () => {
+                        modalHolder.innerHTML = '';
+                    }, { once: true });
+
+                } catch (error) {
+                    alert('Wystąpił błąd podczas ładowania historii.');
+                    console.error(error);
+                } finally {
+                    // Re-enable the button after request completes
+                    btnHistory.disabled = false;
+                }
+            }
+        });
+
+    </script>
+@endpush

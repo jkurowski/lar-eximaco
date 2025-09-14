@@ -74,14 +74,21 @@ class PropertyFormRequest extends FormRequest
             'html' => '',
             'meta_title' => '',
             'meta_description' => '',
-
-            'price' => ['nullable', 'regex:/^\d+(\.\d{1,2})?$/'],
+            'price' => [
+                'nullable',
+                'regex:/^\d+(\.\d{1,2})?$/',
+                function ($attribute, $value, $fail) {
+                    if (!preg_match('/^\d+(\.\d{1,2})?$/', $value)) {
+                        $fail('Pole "' . $attribute . '" musi być liczbą dziesiętną z kropką i maksymalnie 2 miejscami po przecinku (np. 123.45).');
+                    }
+                },
+            ],
             'price_brutto' => ['nullable', 'regex:/^\d+(\.\d{1,2})?$/'],
             'price_30' => ['nullable', 'regex:/^\d+(\.\d{1,2})?$/'],
             'vat' => '',
             'promotion_price' => [
                 'nullable',
-                'numeric',
+                'regex:/^\d+(\.\d{1,2})?$/',
                 function ($attribute, $value, $fail) {
                     if (!empty($value) && !$this->boolean('highlighted')) {
                         $fail('Pole "Promocja" musi być zaznaczone, jeśli ustawiono cenę promocyjną.');
@@ -146,7 +153,8 @@ class PropertyFormRequest extends FormRequest
             'reservation_until.date' => 'The reservation until must be a valid date.',
             'reservation_until.after_or_equal' => 'The reservation until must be a date after or equal to the saled at date.',
             'price_brutto.numeric' => 'Pole "Cena brutto" musi być liczbą.',
-            'price_brutto.regex' => 'Pole "Cena brutto" musi zawierać maksymalnie dwie cyfry po przecinku.',
+            'price_brutto.regex' => 'Pole "Cena brutto" musi być liczbą dziesiętną z kropką i maksymalnie 2 miejscami po przecinku (np. 123.45).',
+            'promotion_price.regex' => 'Pole "Promocja" musi być liczbą dziesiętną z kropką i maksymalnie 2 miejscami po przecinku (np. 123.45).',
 
             // Add these for your visitor_related_ids validation:
             'visitor_related_ids.required' => 'Musisz wybrać dodatkowe powierzchnie.',

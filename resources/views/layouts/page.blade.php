@@ -23,7 +23,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/style.css') }}?v=15092025" rel="stylesheet">
 
     @stack('style')
 
@@ -50,9 +50,9 @@
 
 @include('layouts.partials.cookies')
 
-@auth
-    @include('layouts.partials.inline')
-@endauth
+{{--@auth--}}
+{{--    @include('layouts.partials.inline')--}}
+{{--@endauth--}}
 
 <!-- Styles -->
 <link href="{{ asset('/css/slick.css') }}" rel="stylesheet">

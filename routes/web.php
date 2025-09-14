@@ -70,6 +70,12 @@ Route::group(['namespace' => 'Front', 'middleware' => 'restrictIp', 'as' => 'fro
         Route::post('/update/{inline}', 'InlineController@update')->name('update');
     });
 
+    //Historia cen
+    Route::get('/historia/{property}', 'History\IndexController@show')->name('history');
+    Route::get('/przynalezne/{property}', 'History\IndexController@others')->name('others');
+    Route::get('/przynalezne/{property}/show', 'History\IndexController@other')->name('others.show');
+    Route::get('/przynalezne/{property}/table', 'History\IndexController@otherTable')->name('others.table');
+
     // DeveloPro
     Route::group(['namespace' => 'Developro', 'prefix' => '/i', 'as' => 'developro.'], function () {
         Route::get('/{slug}/plan-inwestycji', 'InvestmentController@index')->name('investment.index');
