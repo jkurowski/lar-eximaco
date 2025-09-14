@@ -65,10 +65,12 @@
                                     </div>
                                 @endif
                             </div>
-                            @if($property->has_price_history)
-                                <a class="project-btn project-btn--gray btn-history mb-3" data-id="{{ $property->id }}" href="#">Historia zmian ceny</a>
-                            @else
-                                <p>Cena nie zmieniła się od 11.09.2025 r.</p>
+                            @if($property->status == 1)
+                                @if($property->has_price_history)
+                                    <a class="project-btn project-btn--gray btn-history mb-3" data-id="{{ $property->id }}" href="#">Historia zmian ceny</a>
+                                @else
+                                    <p>Cena nie zmieniła się od 11.09.2025 r.</p>
+                                @endif
                             @endif
                             @auth
                                 @if($property->priceComponents)
