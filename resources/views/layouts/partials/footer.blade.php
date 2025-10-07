@@ -46,7 +46,7 @@
                 </div>
                 <div class="col-md-6 col-xl-4 offset-xl-1">
                     <h4 class="site-footer_title">Kontakt</h4>
-                    <p>Eximaco Paweł Matulaniec Spółka Jawna</p>
+                    <p>"EXIMACO" PAWEŁ MATULANIEC, SPÓŁKA KOMANDYTOWA</p>
                     <div class="footer__contact">
                         <div class="footer__contact-address d-flex align-items-center mb-4">
                             <img src="{{ asset('images/pin-2.svg') }}" alt="pinezka" width="39" height="39" loading="lazy">

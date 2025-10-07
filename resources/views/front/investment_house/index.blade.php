@@ -278,6 +278,5 @@
                 }
             }
         });
-
     </script>
 @endpush
